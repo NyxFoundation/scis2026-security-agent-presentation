@@ -48,7 +48,7 @@ layout: default
 
 </div>
 
-<div class="mt-3 p-3 bg-blue-600 text-white rounded-lg text-center">
+<div class="mt-3 p-3 text-black border-black border rounded-lg text-center">
   <div class="font-bold mb-1">"AI監査の現在地"</div>
   <div class="text-xs">
     AI監査は<strong>『過去の類似バグ』</strong>と<strong>『明確な仕様違反』</strong>には極めて強いが、<br>
