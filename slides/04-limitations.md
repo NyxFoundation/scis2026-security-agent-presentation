@@ -69,6 +69,11 @@ layout: default
   </div>
 </div>
 
+<div class="absolute bottom-2 left-2 text-[8px] text-gray-400 max-w-[90%] leading-relaxed">
+  <div><strong class="text-gray-500">[差分ファジング研究]</strong> Fluffy(OSDI'21): https://www.usenix.org/conference/osdi21/presentation/yang</div>
+  <div>Tyr(S&P'23): https://doi.org/10.1109/SP46215.2023.10179386 | <strong class="text-gray-500">[Bug Bounty]</strong> https://ethereum.org/ja/bug-bounty</div>
+</div>
+
 <!--
 これまでの検証手法には限界がありました。
 

@@ -8,54 +8,100 @@ layout: default
 
 # イーサリアムの心臓部を守る「クライアント」とは？
 
-<div class="mt-4 mb-6 p-3 bg-blue-50 rounded-lg text-sm">
-  <strong>クライアント</strong>とは、イーサリアムネットワークに参加するための<strong>ソフトウェア</strong>です。<br>
-  PCで言えば「OS」、インターネットで言えば「Webブラウザ」のような役割を担います。
+<div class="p-2 bg-blue-50 rounded-lg text-sm mb-3">
+  <strong>クライアント</strong> = イーサリアムネットワークに参加するための<strong>ソフトウェア</strong>
 </div>
 
-<div class="grid grid-cols-2 gap-6">
-
-<div>
-  <div class="font-bold text-center mb-3 text-blue-700">クライアント多様性</div>
-
-  <div class="flex justify-center items-center gap-2 mb-4 text-xs">
-    <div class="px-2 py-1 bg-blue-100 rounded">Geth</div>
-    <div class="px-2 py-1 bg-blue-100 rounded">Reth</div>
-    <div class="px-2 py-1 bg-blue-100 rounded">Besu</div>
-    <div class="text-gray-400">...</div>
-    <div class="text-lg text-gray-400 mx-1">×</div>
-    <div class="px-2 py-1 bg-purple-100 rounded">Lighthouse</div>
-    <div class="px-2 py-1 bg-purple-100 rounded">Prysm</div>
-    <div class="text-gray-400">...</div>
-  </div>
-
-  <div class="text-xs text-center text-gray-500 mb-4">
-    実行層 (EL) × 合意層 (CL) の組み合わせを自由に選択可能
-  </div>
-</div>
-
-<div class="space-y-3">
-  <div class="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
-    <div class="text-2xl text-green-600">✓</div>
-    <div>
-      <div class="font-bold text-green-700 text-sm">耐障害性（強み）</div>
-      <div class="text-xs text-gray-600">1つのクライアントにバグがあっても<br>他を使うノードは影響を受けない</div>
+<!-- クライアント一覧 -->
+<div class="grid grid-cols-2 gap-4 mb-3">
+  <div class="p-2 bg-blue-100 rounded-lg">
+    <div class="text-xs font-bold text-blue-700 mb-2 text-center">実行層 (EL) クライアント</div>
+    <div class="flex justify-center items-center gap-3">
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_geth.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Geth</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_reth.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Reth</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_besu.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Besu</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_erigon.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Erigon</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_nethermind.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Nethermind</span>
+      </div>
     </div>
   </div>
 
-  <div class="flex items-start gap-3 p-3 bg-red-50 rounded-lg">
-    <div class="text-2xl text-red-600">✗</div>
-    <div>
-      <div class="font-bold text-red-700 text-sm">検証コスト（課題）</div>
-      <div class="text-xs text-gray-600"><strong>全ての実装</strong>を検証しなければ<br>ネットワーク全体の安全性を保証できない</div>
+  <div class="p-2 bg-purple-100 rounded-lg">
+    <div class="text-xs font-bold text-purple-700 mb-2 text-center">合意層 (CL) クライアント</div>
+    <div class="flex justify-center items-center gap-2">
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_lighthouse.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Lighthouse</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_prysm.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Prysm</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_teku.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Teku</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_nimbus.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Nimbus</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_lodestar.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Lodestar</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="/images/eth_grandine.png" class="h-7 w-7 object-contain" />
+        <span class="text-[9px] text-gray-600">Grandine</span>
+      </div>
     </div>
   </div>
 </div>
 
+<div class="text-center text-xs text-gray-500 mb-3">
+  ノード運用者は EL × CL の組み合わせを<strong>自由に選択</strong>可能 → 計11種類のクライアントが稼働
 </div>
 
-<div class="mt-4 text-center text-sm font-bold text-gray-700">
-  → 11種類もの異なるクライアントを、どのように効率的に検証するか？
+<!-- 強みと課題 -->
+<div class="grid grid-cols-2 gap-4 mb-3">
+  <div class="flex items-center gap-2 p-2 bg-green-50 rounded-lg border border-green-200">
+    <div class="text-xl text-green-600">✓</div>
+    <div>
+      <div class="font-bold text-green-700 text-xs">耐障害性（強み）</div>
+      <div class="text-[10px] text-gray-600">1つにバグがあっても他は影響を受けない</div>
+    </div>
+  </div>
+  <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg border border-red-200">
+    <div class="text-xl text-red-600">✗</div>
+    <div>
+      <div class="font-bold text-red-700 text-xs">検証コスト（課題）</div>
+      <div class="text-[10px] text-gray-600"><strong>全実装</strong>を検証しないと安全性を保証できない</div>
+    </div>
+  </div>
+</div>
+
+<!-- 結論 -->
+<div class="p-2 bg-gray-100 rounded-lg text-center">
+  <div class="text-sm font-bold text-gray-700">
+    → 11種類もの異なるクライアントを、どのように効率的に検証するか？
+  </div>
+</div>
+
+<div class="absolute bottom-2 left-2 text-[8px] text-gray-400 max-w-[90%] leading-relaxed text-left">
+  <div><strong class="text-gray-500">[クライアント多様性]</strong> https://ethereum.org/ja/developers/docs/nodes-and-clients/client-diversity/</div>
 </div>
 
 <!--

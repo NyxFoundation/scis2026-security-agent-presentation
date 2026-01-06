@@ -78,6 +78,10 @@ layout: default
 
 </div>
 
+<div class="absolute bottom-2 left-2 text-[8px] text-gray-400 max-w-[90%] leading-relaxed">
+  <div><strong class="text-gray-500">[LLM監査の先行研究]</strong> RepoAudit: https://arxiv.org/abs/2501.18160 | LLM4Vuln: https://arxiv.org/abs/2401.16185</div>
+</div>
+
 <!--
 提案するAI監査エージェントの概要です。
 

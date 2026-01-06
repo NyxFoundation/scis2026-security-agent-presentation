@@ -67,8 +67,9 @@ layout: default
 
 </div>
 
-<div class="mt-4 text-xs text-gray-500 text-center">
-  出典: Sherlock Contest - Ethereum Fusaka Security Audit
+<div class="absolute bottom-2 left-2 text-[8px] text-gray-400 max-w-[90%] leading-relaxed">
+  <div><strong class="text-gray-500">[コンテスト]</strong> https://audits.sherlock.xyz/contests/1140</div>
+  <div><strong class="text-gray-500">[Fusaka EIP一覧]</strong> https://eips.ethereum.org/EIPS/eip-7607</div>
 </div>
 
 <!--

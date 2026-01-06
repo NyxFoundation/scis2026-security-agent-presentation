@@ -95,6 +95,10 @@ layout: default
 
 </div>
 
+<div class="absolute bottom-2 left-2 text-[8px] text-gray-400 max-w-[90%] leading-relaxed">
+  <div><strong class="text-gray-500">[コンテストルール・脅威モデル]</strong> https://audits.sherlock.xyz/contests/1140</div>
+</div>
+
 <!--
 誤検知の分析です。
 6割以上がInvalid判定を受けましたが、これには明確な理由がありました。

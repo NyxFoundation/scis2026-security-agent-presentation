@@ -40,6 +40,12 @@ class: text-center
   ブロックチェーンの安全性は、<br>基盤となるクライアント実装の健全性に依存している
 </div>
 
+<div class="absolute bottom-2 left-2 text-[8px] text-gray-400 max-w-[90%] leading-relaxed text-left">
+  <div><strong class="text-gray-500">[2024年被害額]</strong> https://beincrypto.com/crypto-hacks-2024-losses-reach-over-2-billion/</div>
+  <div><strong class="text-gray-500">[The DAO事件]</strong> https://www.gemini.com/cryptopedia/the-dao-hack-makerdao</div>
+  <div><strong class="text-gray-500">[Ronin Bridge]</strong> https://www.merklescience.com/blog/hack-track-analysis-of-ronin-network-exploit</div>
+</div>
+
 <!--
 まず、なぜブロックチェーンのセキュリティが重要なのかについてお話しします。
 

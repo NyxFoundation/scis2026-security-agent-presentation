@@ -74,6 +74,10 @@ layout: default
 
 </div>
 
+<div class="absolute bottom-2 left-2 text-[8px] text-gray-400 max-w-[90%] leading-relaxed">
+  <div><strong class="text-gray-500">[コンテスト結果]</strong> https://audits.sherlock.xyz/contests/1140</div>
+</div>
+
 <!--
 結果の詳細です。
 
