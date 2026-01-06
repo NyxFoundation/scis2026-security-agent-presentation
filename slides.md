@@ -4,24 +4,16 @@ title: イーサリアム開発の最前線
 info: |
   ## イーサリアム開発の最前線
   技術課題・研究動向・将来展望
-  
+
   Nyx Foundation登壇資料
   gohan
-class: text-center
+layout: cover
 transition: slide-left
 mdc: true
 ---
 
 # イーサリアム開発の最前線
-## 技術課題・研究動向・将来展望
-
-<div class="mt-16">
-  <p class="text-2xl">gohan</p>
-</div>
-
-<div class="absolute bottom-10 right-10">
-  <img src="/images/nyx_logo.svg" alt="Nyx Foundation" width="120" />
-</div>
+### gohan
 
 ---
 layout: two-cols
@@ -66,10 +58,6 @@ layoutClass: gap-16
   </div>
 </div>
 
-<div class="absolute bottom-10 right-10">
-  <img src="/images/nyx_logo.svg" alt="Nyx Foundation" width="100" />
-</div>
-
 ---
 
 # 本勉強会の目的
@@ -94,10 +82,6 @@ layoutClass: gap-16
     <h3 class="font-bold text-center">エコシステム</h3>
     <p class="text-xs mt-2 text-center">zkHyperliquid Bitcoin DeFi Privacy etc.</p>
   </div>
-</div>
-
-<div class="absolute bottom-10 right-10">
-  <img src="/images/nyx_logo.svg" alt="Nyx Foundation" width="100" />
 </div>
 
 ---
@@ -168,10 +152,6 @@ layoutClass: gap-16
   </div>
 </div>
 
-<div class="absolute bottom-10 right-10">
-  <img src="/images/nyx_logo.svg" alt="Nyx Foundation" width="100" />
-</div>
-
 ---
 
 # イーサリアムロードマップ
@@ -206,10 +186,6 @@ graph LR
     style J fill:#F8BBD0
 ```
 
-<div class="absolute bottom-10 right-10">
-  <img src="/images/nyx_logo.svg" alt="Nyx Foundation" width="100" />
-</div>
-
 ---
 
 # まとめ
@@ -233,10 +209,6 @@ graph LR
 
 <div class="mt-16 text-center">
   <h2 class="text-3xl font-bold">ご質問ありがとうございました</h2>
-</div>
-
-<div class="absolute bottom-10 right-10">
-  <img src="/images/nyx_logo.svg" alt="Nyx Foundation" width="100" />
 </div>
 
 ---
