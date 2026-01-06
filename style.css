@@ -3,15 +3,21 @@
 :root {
   --slidev-theme-primary: #000000 !important;
   --slidev-theme-default: #000000;
-  --slidev-theme-accent: #333333;
+  --slidev-theme-accent: #000000;
 }
 
 /* Global font settings */
 .slidev-layout,
 .slidev-page,
-p, span, div, li, a, td, th {
+p,
+span,
+div,
+li,
+a,
+td,
+th {
   font-family: 'Noto Sans JP', 'BIZ UDPMincho', sans-serif !important;
-  color: #1a1a1a;
+  color: #000000;
 }
 
 /* ===== H1 Title Styling - スタイリッシュな黒タイトル ===== */

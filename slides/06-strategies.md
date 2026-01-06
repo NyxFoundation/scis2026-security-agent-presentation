@@ -14,11 +14,11 @@ layout: default
 
 <div class="grid grid-cols-3 gap-4">
 
-<div class="p-3 border-2 border-blue-400 rounded-lg bg-blue-50">
-  <div class="font-bold text-blue-800 mb-2 text-sm">(i) 仕様ベース静的検査</div>
+<div class="p-3 border-2 border-primary-light rounded-lg bg-primary-bg">
+  <div class="font-bold text-primary-dark mb-2 text-sm">(i) 仕様ベース静的検査</div>
   <div class="p-2 bg-white rounded mb-2 text-xs">
     <div class="font-bold text-gray-600">比喩で言えば...</div>
-    <div class="text-blue-700">「設計図と実物を見比べる」</div>
+    <div class="text-primary">「設計図と実物を見比べる」</div>
   </div>
   <div class="text-xs space-y-1">
     <div>仕様要件が実装で正しく守られているか検証</div>
@@ -28,11 +28,11 @@ layout: default
   </div>
 </div>
 
-<div class="p-3 border-2 border-green-400 rounded-lg bg-green-50">
-  <div class="font-bold text-green-800 mb-2 text-sm">(ii) 類似バグ探索</div>
+<div class="p-3 border-2 border-secondary-light rounded-lg bg-secondary-bg">
+  <div class="font-bold text-secondary-dark mb-2 text-sm">(ii) 類似バグ探索</div>
   <div class="p-2 bg-white rounded mb-2 text-xs">
     <div class="font-bold text-gray-600">比喩で言えば...</div>
-    <div class="text-green-700">「過去の失敗から学ぶ」</div>
+    <div class="text-secondary">「過去の失敗から学ぶ」</div>
   </div>
   <div class="text-xs space-y-1">
     <div>既知バグパターンを他クライアントに横展開</div>
@@ -42,11 +42,11 @@ layout: default
   </div>
 </div>
 
-<div class="p-3 border-2 border-purple-400 rounded-lg bg-purple-50">
-  <div class="font-bold text-purple-800 mb-2 text-sm">(iii) 動的テスト生成</div>
+<div class="p-3 border-2 border-tertiary-light rounded-lg bg-tertiary-bg">
+  <div class="font-bold text-tertiary-dark mb-2 text-sm">(iii) 動的テスト生成</div>
   <div class="p-2 bg-white rounded mb-2 text-xs">
     <div class="font-bold text-gray-600">比喩で言えば...</div>
-    <div class="text-purple-700">「実際に動かして試す」</div>
+    <div class="text-tertiary">「実際に動かして試す」</div>
   </div>
   <div class="text-xs space-y-1">
     <div>テストケース・Fuzzerを自動生成して実機検証</div>
@@ -58,7 +58,7 @@ layout: default
 
 </div>
 
-<div class="mt-4 p-3 bg-yellow-50 rounded-lg border border-yellow-300">
+<div class="mt-4 p-3 bg-secondary-bg rounded-lg border border-secondary-light">
   <div class="flex items-center gap-3">
     <div class="text-2xl">💡</div>
     <div class="text-sm">

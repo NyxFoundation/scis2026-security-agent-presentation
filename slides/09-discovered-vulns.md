@@ -14,14 +14,14 @@ layout: default
 
 <div class="grid grid-cols-5 gap-4">
 
-<div class="col-span-3 border-2 border-blue-500 rounded-lg p-3 bg-blue-50">
+<div class="col-span-3 border-2 border-primary rounded-lg p-3 bg-primary-bg">
   <div class="flex items-center gap-2 mb-2">
-    <span class="bg-blue-600 text-white px-2 py-0.5 rounded text-xs font-bold">Low</span>
+    <span class="bg-primary text-white px-2 py-0.5 rounded text-xs font-bold">Low</span>
     <span class="font-bold">#109: Nimbus custody rotation DoS</span>
   </div>
 
   <div class="bg-white p-2 rounded mb-2 text-sm">
-    <strong class="text-blue-700">発見手法:</strong> 仕様ベース静的検査
+    <strong class="text-primary">発見手法:</strong> 仕様ベース静的検査
   </div>
 
   <div class="grid grid-cols-2 gap-2 text-xs">
@@ -31,11 +31,11 @@ layout: default
     </div>
     <div class="bg-white p-2 rounded">
       <div class="font-bold text-gray-600 mb-1">発見した実装不備</div>
-      <div class="text-red-600">上限検証なしでループ条件に使用<br>→ 無限ループが発生可能</div>
+      <div class="text-tertiary">上限検証なしでループ条件に使用<br>→ 無限ループが発生可能</div>
     </div>
   </div>
 
-  <div class="mt-2 p-2 bg-red-100 rounded text-xs">
+  <div class="mt-2 p-2 bg-tertiary-bg rounded text-xs">
     <strong>もし放置されていたら？</strong><br>
     攻撃者が不正な値を送信 → ノードが無限ループで停止 → ネットワークの一部がダウン
   </div>
@@ -68,7 +68,7 @@ layout: default
     <div class="text-gray-600">同期ノードが古いデータを要求し続ける</div>
   </div>
 
-  <div class="mt-2 p-2 bg-green-50 rounded text-xs border border-green-300">
+  <div class="mt-2 p-2 bg-secondary-bg rounded text-xs border border-secondary-light">
     <strong>共通点:</strong> 既知パターンの横展開が成功
   </div>
 </div>

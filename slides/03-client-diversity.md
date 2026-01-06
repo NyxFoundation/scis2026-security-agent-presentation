@@ -8,14 +8,14 @@ layout: default
 
 # イーサリアムの心臓部を守る「クライアント」とは？
 
-<div class="p-2 bg-blue-50 rounded-lg text-sm mb-3">
+<div class="p-2 bg-primary-bg rounded-lg text-sm mb-3">
   <strong>クライアント</strong> = イーサリアムネットワークに参加するための<strong>ソフトウェア</strong>
 </div>
 
 <!-- クライアント一覧 -->
 <div class="grid grid-cols-2 gap-4 mb-3">
-  <div class="p-2 bg-blue-100 rounded-lg">
-    <div class="text-xs font-bold text-blue-700 mb-2 text-center">実行層 (EL) クライアント</div>
+  <div class="p-2 bg-primary-bg rounded-lg">
+    <div class="text-xs font-bold text-primary-dark mb-2 text-center">実行層 (EL) クライアント</div>
     <div class="flex justify-center items-center gap-3">
       <div class="flex flex-col items-center">
         <img src="/images/eth_geth.png" class="h-7 w-7 object-contain" />
@@ -40,8 +40,8 @@ layout: default
     </div>
   </div>
 
-  <div class="p-2 bg-purple-100 rounded-lg">
-    <div class="text-xs font-bold text-purple-700 mb-2 text-center">合意層 (CL) クライアント</div>
+  <div class="p-2 bg-secondary-bg rounded-lg">
+    <div class="text-xs font-bold text-secondary-dark mb-2 text-center">合意層 (CL) クライアント</div>
     <div class="flex justify-center items-center gap-2">
       <div class="flex flex-col items-center">
         <img src="/images/eth_lighthouse.png" class="h-7 w-7 object-contain" />
@@ -77,17 +77,17 @@ layout: default
 
 <!-- 強みと課題 -->
 <div class="grid grid-cols-2 gap-4 mb-3">
-  <div class="flex items-center gap-2 p-2 bg-green-50 rounded-lg border border-green-200">
-    <div class="text-xl text-green-600">✓</div>
+  <div class="flex items-center gap-2 p-2 bg-success-bg rounded-lg border border-success-light">
+    <div class="text-xl text-success">✓</div>
     <div>
-      <div class="font-bold text-green-700 text-xs">耐障害性（強み）</div>
+      <div class="font-bold text-success-dark text-xs">耐障害性（強み）</div>
       <div class="text-[10px] text-gray-600">1つにバグがあっても他は影響を受けない</div>
     </div>
   </div>
-  <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg border border-red-200">
-    <div class="text-xl text-red-600">✗</div>
+  <div class="flex items-center gap-2 p-2 bg-tertiary-bg rounded-lg border border-tertiary-light">
+    <div class="text-xl text-tertiary">✗</div>
     <div>
-      <div class="font-bold text-red-700 text-xs">検証コスト（課題）</div>
+      <div class="font-bold text-tertiary-dark text-xs">検証コスト（課題）</div>
       <div class="text-[10px] text-gray-600"><strong>全実装</strong>を検証しないと安全性を保証できない</div>
     </div>
   </div>
