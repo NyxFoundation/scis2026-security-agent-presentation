@@ -38,14 +38,15 @@ defineProps({
 .cover-icon {
   position: absolute;
   top: -40px;
-  left: -40px;
-  z-index: 10;
-  opacity: 0.5;
+  left: -70px;
+  z-index: 0;
 }
 
 .cover-icon img {
-  width: 280px;
+  width: 360px;
   height: auto;
+  opacity: 0.4;
+  filter: grayscale(100%) brightness(0.6);
 }
 
 .cover-content {

@@ -212,9 +212,7 @@ graph LR
 </div>
 
 ---
-layout: end
+layout: cover
 ---
 
 # Thank you!
-
-Nyx Foundation
