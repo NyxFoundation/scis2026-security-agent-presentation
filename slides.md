@@ -11,23 +11,23 @@ src: ./slides/01-cover.md
 ---
 
 ---
-src: ./slides/02-background.md
+src: ./slides/02-why-security-matters.md
 ---
 
 ---
-src: ./slides/03-limitations.md
+src: ./slides/03-client-diversity.md
 ---
 
 ---
-src: ./slides/04-proposal.md
+src: ./slides/04-limitations.md
 ---
 
 ---
-src: ./slides/05-strategies.md
+src: ./slides/05-proposal.md
 ---
 
 ---
-src: ./slides/06-context-engineering.md
+src: ./slides/06-strategies.md
 ---
 
 ---
@@ -43,33 +43,33 @@ src: ./slides/09-discovered-vulns.md
 ---
 
 ---
-src: ./slides/10-success-factors.md
+src: ./slides/10-missed-vulns.md
 ---
 
 ---
-src: ./slides/11-missed-vulns.md
+src: ./slides/11-false-positive-analysis.md
 ---
 
 ---
-src: ./slides/12-miss-analysis.md
+src: ./slides/12-academic-contributions.md
 ---
 
 ---
-src: ./slides/13-false-positive-analysis.md
+src: ./slides/13-business-message.md
 ---
 
 ---
-src: ./slides/14-lessons-learned.md
+src: ./slides/14-improvements.md
 ---
 
 ---
-src: ./slides/15-improvements.md
+src: ./slides/15-conclusion.md
 ---
 
 ---
-src: ./slides/16-conclusion.md
+src: ./slides/16-thankyou.md
 ---
 
 ---
-src: ./slides/17-thankyou.md
+src: ./slides/17-appendix.md
 ---
