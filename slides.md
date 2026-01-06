@@ -1,523 +1,376 @@
 ---
 theme: seriph
-title: イーサリアム開発の最前線
+title: イーサリアムクライアント実装における自動脆弱性検知
 info: |
-  ## イーサリアム開発の最前線
-  技術課題・研究動向・将来展望
-
-  Nyx Foundation登壇資料
-  gohan
+  ## イーサリアムクライアント実装における自動脆弱性検知
+  SCIS2026 発表資料
+  Nyx Foundation 堤 真聖
 layout: cover
 transition: slide-left
 mdc: true
 ---
 
-# イーサリアム開発の最前線
-## 技術課題・研究動向・将来展望
+# イーサリアムクライアント実装における<br>自動脆弱性検知
+<div class="mb-4"></div>
 
-gohan
+## Automatic Vulnerability Detection in Ethereum Client Implementation
+
+<div class="absolute bottom-10 left-14">
+  <div class="font-bold">堤 真聖 (Nyx Foundation)</div>
+  <div class="text-sm opacity-80">SCIS2026</div>
+</div>
+
+<!--
+Nyx Foundationの堤です。
+本日は「イーサリアムクライアント実装における自動脆弱性検知」というタイトルで発表させていただきます。
+本研究は、大規模言語モデルを用いたAIエージェントを用いて、イーサリアムのクライアント実装に対するセキュリティ監査を自動化・効率化する試みです。
+実際に開催された監査コンテストでの評価結果も交えて報告します。
+-->
 
 ---
 layout: two-cols
 layoutClass: gap-8
 ---
 
-# 自己紹介
+# 背景: イーサリアムのクライアント多様性
 
-**gohan**
+イーサリアムは**単一の参照実装を持たず**、共通仕様に基づく複数の独立したクライアント実装が連携して稼働する(Client Diversity)。
 
-- Nyx Foundation所属
-- ZK Tokyo運営
-- 早稲田大学暗号学修士
-- イーサリアム財団奨学生
+- **実行層 (EL)**: Geth, Nethermind, Besu, Erigon, Reth 等
+- **合意形成層 (CL)**: Lighthouse, Nimbus, Teku, Prysm, Lodestar 等
+- **$N \times M$ の組み合わせ**による相互運用
 
 ::right::
 
-<div class="mt-8">
-
-**これまでやったこと**
-
-- イーサリアムへ複数バグ報告
-- Fusaka監査コンテストで15件のバグ報告
-- Geth, Erigonの実装改善に貢献
-- zkVMベンチマークの研究（国際学会採択）
-- MPCで数理最適化を解くシステムの研究
-
+<div class="mt-8 p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+  <div class="font-bold text-green-700">メリット: 耐障害性 (Resilience)</div>
+  <div class="text-sm mt-1">特定の実装にバグがあってもネットワーク全体は停止しない（単一障害点の排除）。</div>
 </div>
+
+<div class="mt-4 p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+  <div class="font-bold text-red-700">課題: 検証コストの増大</div>
+  <div class="text-sm mt-1">
+    <ul>
+      <li>実装間の微細な解釈違いが致命的な<br><strong>コンセンサス障害 (Chain Split)</strong> を招く</li>
+      <li>全組み合わせの網羅的な検証はコストが指数関数的に増大</li>
+    </ul>
+  </div>
+</div>
+
+<!--
+まず背景です。
+イーサリアムの大きな特徴として「クライアント多様性 (Client Diversity)」が挙げられます。
+ビットコインなどとは異なり、単一の参照実装が存在せず、仕様書に基づいて開発された複数の独立したクライアントソフトが並存しています。
+左側に示したように、実行層・合意形成層それぞれに多数の実装があり、これらがN対Mで相互運用しています。
+
+右側をご覧ください。この多様性は、特定のソフトにバグがあってもネットワーク全体が止まらないという強力な耐障害性を生みます。
+一方で、セキュリティ監査の観点からは非常にコストが高い構造です。
+わずかな仕様の解釈違いがチェーンの分岐（スプリット）などの致命的な障害につながるため、アップグレードのたびに全ての組み合わせを検証する必要があるからです。
+-->
 
 ---
 
-# 本勉強会の目的
+# 既存手法の限界
 
-<div class="text-center text-xl font-bold mt-2 mb-6">
-3つの地図を完全理解する！！！
-</div>
+プロトコルアップグレードごとの検証には、従来以下の手法が用いられてきたが、それぞれに限界がある。
 
-<div class="grid grid-cols-3 gap-4">
-<div class="border-2 border-amber-400 rounded-lg p-3 bg-amber-50 text-center">
-<div class="text-2xl mb-1">🧭</div>
-<div class="font-bold text-sm">ロードマップの方向性</div>
-<div class="text-xs mt-1 opacity-80">シンプル・柔軟性・分散性を保ったまま速く</div>
-</div>
+<div class="grid grid-cols-2 gap-4 mt-6">
 
-<div class="border-2 border-orange-400 rounded-lg p-3 bg-orange-50 text-center">
-<div class="text-2xl mb-1">📅</div>
-<div class="font-bold text-sm">直近アップグレード</div>
-<div class="text-xs mt-1 opacity-80">Fusaka / Glamsterdam</div>
+<div class="p-4 border rounded bg-gray-50">
+  <div class="font-bold mb-2">① 人手による監査</div>
+  <ul class="text-sm list-disc pl-4 space-y-1">
+    <li>専門家によるコードレビュー</li>
+    <li><strong>スケーラビリティに欠ける</strong></li>
+    <li>コストが高い</li>
+  </ul>
 </div>
 
-<div class="border-2 border-red-400 rounded-lg p-3 bg-red-50 text-center">
-<div class="text-2xl mb-1">🔗</div>
-<div class="font-bold text-sm">エコシステム</div>
-<div class="text-xs mt-1 opacity-80">zkHyperliquid / Bitcoin DeFi / Privacy</div>
+<div class="p-4 border rounded bg-gray-50">
+  <div class="font-bold mb-2">② 差分ファジング (Fluffy, Forky等)</div>
+  <ul class="text-sm list-disc pl-4 space-y-1">
+    <li>同一入力を複数クライアント与えて比較</li>
+    <li><strong>意味論的盲点 (Semantic Blindness)</strong><br><span class="text-xs opacity-70">全員が同じ勘違いをしていると検知できない</span></li>
+    <li>Deep Stateへの到達が困難</li>
+  </ul>
 </div>
+
 </div>
+
+<div class="mt-6 text-center font-bold text-xl text-blue-700">
+  LLMエージェントを用いて「熟練監査員のワークフロー」を自動化できないか？
+</div>
+
+<!--
+これまでの検証手法には限界がありました。
+一つは「専門家によるマニュアル監査」ですが、これは当然スケーラビリティに欠け、コストも莫大です。
+もう一つは「差分ファジング」です。同じ入力を各クライアントに食わせて出力を比較する手法ですが、これには「意味論的盲点」という弱点があります。
+つまり、仕様自体が曖昧で全員が同じように間違った実装をしていた場合、差分が出ず検知できないのです。
+
+そこで本研究では、LLMエージェントを用いることで、仕様を理解し、熟練監査員のような手順でコードを検証するプロセスを自動化できないかと考えました。
+-->
 
 ---
 
-# イーサリアムについておさらい
+# 提案手法: AI監査エージェント
 
-イーサリアムは信頼機関なしで動くプログラムを実行できる**「分散型アプリ基盤」**
+監査プロセス（仕様理解、コード探索、検証、報告）を一気通貫で行う**Human-in-the-Loop (HITL) エージェント**を構築。
 
-<div class="grid grid-cols-2 gap-4 mt-2">
-<div>
-
-```mermaid {scale: 0.55}
-flowchart LR
-    V1((V1)) & V2((V2)) & V3((V3)) --> C[多数決]
-    C --> B[確定]
+```mermaid {scale: 0.7}
+graph LR
+    A[仕様書/EIPs] -->|Spec Extractor| B(仕様抽出)
+    B -->|Impl Mapper| C(実装マッピング)
+    C -->|Code Auditor| D(コード監査)
+    D -->|Tester/PoC Gen| E(検証・PoC生成)
+    E -->|Reviewer| F[レポート]
+    
+    style A fill:#f9f,stroke:#333
+    style F fill:#9f9,stroke:#333
+    style D fill:#bbf,stroke:#333
 ```
 
-```mermaid {scale: 0.5}
-flowchart LR
-    A[提案] --> B[検証]
-    B -->|12s| C[正当化]
-    C -->|6min| D[確定]
-    style D fill:#90EE90
-```
+- **コンテキストエンジニアリング**: 
+  - プロジェクト全体ではなく、「仕様ID」に関連する関数のみを抽出してLLMに入力 (Scope Reduction)
+  - 状態をJSONで管理し、各工程を独立したタスクとして実行
 
-</div>
-<div>
+<!--
+提案するAI監査エージェントの概要です。
+このエージェントは、図のように「仕様の抽出」「実装箇所へのマッピング」「コード監査」「検証」「レポート作成」というパイプラインを実行します。
+これは従来のFuzzingのようなブラックボックスな手法ではなく、ホワイトボックスな監査プロセスそのものを模倣する設計です。
 
-```mermaid {scale: 0.55}
-flowchart LR
-    U[Users] --> L2[L2]
-    L2 -->|proof| L1[L1]
-    style L1 fill:#FFB6C1
-    style L2 fill:#87CEEB
-```
-
-**ポイント**
-- 誰が正しいか多数決で決める
-- いつ会計が締められるかが明確
-- L2でスケール、L1で信頼を担保
-
-</div>
-</div>
+技術的な工夫として「コンテキストエンジニアリング」を行っています。
+数百万行あるコードを全てLLMに読ませるのではなく、特定の仕様IDに関連する関数のみを抽出して渡すことで、探索範囲を適切に絞り込んでいます。
+また、完全に自律させるのではなく、最終確認や重要な判断に人間が介在するHuman-in-the-Loop構成を採用しています。
+-->
 
 ---
 
-# イーサリアムロードマップ
+# 3つの脆弱性検知戦略
 
-<span class="text-green-600 font-bold">シンプルに</span>・<span class="text-amber-600 font-bold">柔軟に</span>・<span class="text-red-600 font-bold">分散したまま速く</span>
+熟練監査員の思考プロセスを模倣する3つの戦略を並行して実行。
 
-```mermaid {scale: 0.6}
-flowchart LR
-    A["Peer-DAS/ePBS/BALs"] --> B[DAS] --> C[Based Rollup] --> D[Kohaku] --> E[AA]
-    B -.-> F[Danksharding]
-    C -.-> G[Stateless]
-    D -.-> H[Native Rollup]
-    E -.-> I["RISC-V/3SF"]
+<div class="grid grid-cols-3 gap-4 mt-4">
 
-    style A fill:#C8E6C9
-    style B fill:#C8E6C9
-    style F fill:#C8E6C9
-    style C fill:#FFE0B2
-    style D fill:#FFE0B2
-    style G fill:#FFE0B2
-    style H fill:#FFE0B2
-    style E fill:#FFCDD2
-    style I fill:#FFCDD2
-```
+<div class="border-t-4 border-blue-500 pt-2">
+  <div class="font-bold text-lg mb-2">(i) 仕様ベース静的検査</div>
+  <div class="text-sm">
+    抽出された仕様要件（例：定数値、境界条件）が実装で守られているかをチェック。「中立な監査員」ロール。
+  </div>
+</div>
+
+<div class="border-t-4 border-orange-500 pt-2">
+  <div class="font-bold text-lg mb-2">(ii) 類似バグ探索</div>
+  <div class="text-sm font-bold text-orange-600">★ 最も有効</div>
+  <div class="text-sm">
+    過去の脆弱性パターン（CVE等）をFew-shotとして与え、類似構造を探索。「既知バグの変種」を効率的に発見。
+  </div>
+</div>
+
+<div class="border-t-4 border-green-500 pt-2">
+  <div class="font-bold text-lg mb-2">(iii) 動的テスト生成</div>
+  <div class="text-sm">
+    静的解析で疑わしい箇所に対して、単体テストや簡易Fuzzerを生成・実行。「テストエンジニア」ロール。
+  </div>
+</div>
+
+</div>
+
+<!--
+エージェントは主に3つの戦略で脆弱性を探索します。
+
+1つ目は「仕様ベース静的検査」です。仕様書にある定数や条件がコード上で守られているかを確認します。
+2つ目は「類似バグ探索」です。過去の脆弱性事例を知識として与え、似たようなコードパターンや論理構造がないかを探させます。結論から言うとこれが最も効果的でした。
+3つ目は「動的テスト生成」です。怪しい箇所に対してピンポイントでテストコードやFuzzerを書いて検証します。
+-->
 
 ---
 
-# ①シンプルに
+# 評価実験: Fusaka監査コンテスト
 
-<div class="grid grid-cols-2 gap-4 mt-2">
+**実験設定**:
+- **対象**: イーサリアム次期アップグレード「Fusaka」(PeerDAS等を含む)
+- **期間**: 2025年9月〜10月
+- **対象**: 11種類の主要クライアント (Geth, Nethermind, Lighthouse, Nimbus等)
+- **参加者**: スキルレベルの異なる4名が本エージェントを使用
 
-<div class="border rounded p-3 bg-blue-50">
-<div class="font-bold mb-1">RISC-V</div>
-<div class="text-sm">Solidity → Rust, Go（高速化&拡張性）</div>
+<div class="mt-4">
+<table class="w-full text-sm">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="p-2">ID</th>
+      <th class="p-2">バックグラウンド</th>
+      <th class="p-2">主な役割・戦略</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="p-2 border-b">参加者A</td>
+      <td class="p-2 border-b">エンジニア経験あり</td>
+      <td class="p-2 border-b">網羅的なコード探索</td>
+    </tr>
+    <tr>
+      <td class="p-2 border-b">参加者B</td>
+      <td class="p-2 border-b">ホワイトハッカー経験あり</td>
+      <td class="p-2 border-b">PoC作成・詳細検証</td>
+    </tr>
+    <tr>
+      <td class="p-2 border-b">参加者C</td>
+      <td class="p-2 border-b">エンジニア経験限定的</td>
+      <td class="p-2 border-b">ツール運用のみ</td>
+    </tr>
+    <tr class="bg-yellow-50">
+      <td class="p-2 border-b font-bold">参加者D</td>
+      <td class="p-2 border-b font-bold">未経験 (Non-expert)</td>
+      <td class="p-2 border-b font-bold">類似探索の完全自動運転</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
-<div class="border rounded p-3 bg-blue-50">
-<div class="font-bold mb-1">leanConsensus (zkVM統合)</div>
-<div class="text-sm">固有アルゴリズム → ZK検証</div>
-</div>
-
-<div class="border rounded p-3 bg-blue-50">
-<div class="font-bold mb-1">Account Abstraction (EOA廃止)</div>
-<div class="text-sm">EOA & CA → CA only</div>
-</div>
-
-<div class="border rounded p-3 bg-blue-50">
-<div class="font-bold mb-1">Stateless</div>
-<div class="text-sm">フルノード → 軽量ノード</div>
-</div>
-
-</div>
-
-```mermaid {scale: 0.5}
-flowchart LR
-    A1[複雑] --> B1[シンプル]
-    style B1 fill:#90EE90
-```
-
----
-
-# ウォレット耐量子移行のカギはAccount Abstraction
-
-```mermaid {scale: 0.65}
-flowchart TB
-    User((User))
-    EOA[EOA]
-    CA[CA]
-
-    User --> EOA
-    EOA -->|"①資産を移動"| CA
-    User -.->|"②アクセス禁止 ❌"| EOA
-    User -->|"③復元 ✅"| CA
-
-    style EOA fill:#FFCDD2
-    style CA fill:#C8E6C9
-```
-
-<div class="p-3 bg-pink-50 rounded border-l-4 border-pink-400 text-sm">
-<div class="font-bold">イーサリアムがビットコインを救う？？？</div>
-<div class="mt-1">zkVMを用いたビットコインの耐量子移行実現に取り組むエンジニアも</div>
-</div>
-
----
-
-# ②柔軟に
-
-| レイヤー | 技術 | 効果 |
-|---|---|---|
-| **L1** | ePBS | ビルダーとの通信が柔軟に |
-| **L1** | leanConsensus | コンセンサスが柔軟に |
-| **L2** | Based Rollup | ロールアップが柔軟に |
-| **L2** | Native Rollup | シーケンサーロジックの強制化 |
-| **User** | Kohaku Wallet | ウォレットが柔軟に |
-
----
-
-# ③分散性を保ったまま速く
-
-<div class="grid grid-cols-2 gap-8 mt-4">
-
-<div class="text-center">
-<div class="text-sm text-gray-500">Block Latency</div>
-<div class="text-4xl font-bold">
-<span class="text-gray-400">12s</span> → <span class="text-orange-500">4s</span>
-</div>
-<div class="mt-4 text-left text-sm">
-
-- **Block-level Access Lists**: 並列処理
-- **Data Availability Sampling**: Blob数増加
-
-</div>
-</div>
-
-<div class="text-center">
-<div class="text-sm text-gray-500">Finality</div>
-<div class="text-4xl font-bold">
-<span class="text-gray-400">6min</span> → <span class="text-orange-500">12s</span>
-</div>
-<div class="mt-4 text-left text-sm">
-
-- **3 Slot Finality (3SF)**
-
-$T_{finality} = 3 \times 4s = 12s$
-
-</div>
-</div>
-
-</div>
-
----
-
-# 直近のアップグレード
-
-| | 主要技術 | ユーザー影響 | ノード運用者影響 |
-|---|---|---|---|
-| **Fusaka** | PeerDAS | <span class="text-green-600">L2 TPS↑</span> | <span class="text-red-500">負荷↑</span> |
-| **Glamsterdam** | ePBS/BALs/FOCIL | <span class="text-green-600">L1 TPS↑</span> <span class="text-green-600">検閲耐性↑</span> | <span class="text-red-500">帯域要求↑</span> <span class="text-green-600">収益安定↑</span> |
-
-<div class="mt-4 text-xs opacity-70">
-
-参考: https://eips.ethereum.org/EIPS/eip-7607, https://eips.ethereum.org/EIPS/eip-7773
-
-</div>
-
----
-
-# 安全性を支える仕組み① 形式検証
-
-<div class="grid grid-cols-2 gap-6">
-
-<div class="bg-pink-50 p-3 rounded">
-<div class="font-bold mb-2">形式検証とは？</div>
-<div class="text-sm">プログラムの安全性を**数学的に証明**する技術</div>
-
-$\forall x: P(x) \Rightarrow Q(f(x))$
-
-<div class="text-xs mt-2">テストよりも網羅的に安全性を保障できる</div>
-</div>
-
-<div class="bg-amber-50 p-3 rounded">
-<div class="font-bold mb-2">Nyx Foundationの貢献</div>
-<div class="text-sm">
-耐量子署名の一部を形式検証してケンブリッジ大学で開かれたEF合宿で発表
-</div>
-<div class="text-xs mt-2">AIエージェントでLean形式検証を自動化</div>
-</div>
-
-</div>
-
----
-
-# 安全性を支える仕組み② 実装セキュリティ対策
-
-<div class="grid grid-cols-2 gap-6">
-
-<div>
-
-```mermaid {scale: 0.6}
-flowchart TB
-    A[監査コンテスト] --> B[バグバウンティ]
-    B --> C[監査]
-    C --> D[メインネット]
-    style D fill:#90EE90
-```
-
-</div>
-
-<div>
-
-**実装ガード**: 後方互換性、フェイルセーフ機構
-
-**クライアント多様性**: 複数言語実装、単一障害点排除
-
-<div class="p-2 bg-blue-50 rounded text-center mt-2">
-<span class="text-xl font-bold text-blue-600">10年間</span> ゼロダウンタイム
-</div>
-
-<div class="p-2 bg-green-50 rounded mt-2 text-sm">
-バグバウンティ: 2件 / 監査コンテスト: 15件
-</div>
-
-</div>
-</div>
-
----
-
-# よくある疑問: なぜL2ではなくL1？
-
-<div class="text-center text-sm opacity-70 mb-2">
-Tempo / Hyperliquid / Arc などがL1を選択
-</div>
-
-```mermaid {scale: 0.6}
-flowchart LR
-    P1["ロールアップが遅い"] --> S1["ZKの実用化"]
-    P2["L1の確定が遅い"] --> S2["確定の高速化(3SF)"]
-
-    style P1 fill:#FFCDD2
-    style P2 fill:#FFCDD2
-    style S1 fill:#C8E6C9
-    style S2 fill:#C8E6C9
-```
-
-<div class="text-xs opacity-70">
-参考: Ethproofs, 3SF論文
-</div>
-
----
-
-# イーサリアムユースケース
-
-```mermaid {scale: 0.6}
-mindmap
-  root((Ethereum))
-    zk-Hyperliquid
-      HIBACHI
-      Lighter
-    Bitcoin DeFi
-      Citrea
-      BitVM
-    Privacy
-      ZKP2P
-      RAILGUN
-    AI
-      MINA
-      EZKL
-    Bridge
-      ACROSS
-    予測市場
-      Polymarket
-```
+<!--
+評価のために、実際に開催された「Fusaka監査コンテスト」に参加しました。
+これは次期アップグレードを対象とした大規模なバグバウンティです。
+今回は、同じエージェントシステムを使いつつ、スキルレベルの異なる4名の参加者が運用を行いました。
+特に注目していただきたいのが「参加者D」で、エンジニアリングやハッキングの経験がない非専門家（Non-expert）です。
+-->
 
 ---
 layout: two-cols
 layoutClass: gap-8
 ---
 
-# Nyx Foundationの実践経験
+# 検知結果: コンテスト1位
 
-- マイナンバーカードを使ったDID
-- zkVM
-- 無担保DeFiローン
-- MPCを使った決済ネッティング
-- DeFiソルバーアルゴリズム
-- クロスチェーンブリッジ
-- NFT / ステーブルコイン
-- ノード運用
-- +複数件のセキュリティ監査
+<div class="text-4xl font-bold text-center mt-8 mb-4">
+  <span class="text-blue-600">17件</span> <span class="text-lg text-gray-500">の有効な脆弱性を報告</span>
+</div>
+
+- 総提出数: 54件 (Valid率 31.5%)
+- **報告件数において第1位**の成果
+- 特にNimbus, Grandine等のCLクライアントで多数発見（PeerDASの新規実装部分）
+
+<div class="mt-6 p-4 bg-gray-100 rounded text-sm">
+"従来のFuzzingでは到達困難な『仕様の解釈違い』に起因する論理バグを多数検出できた"
+</div>
 
 ::right::
 
-<div class="mt-12">
+<div class="font-bold mb-2">戦略別の有効性</div>
 
-<div class="p-4 bg-gray-100 rounded-xl text-center">
-<div class="font-bold mb-2">お気軽にご相談ください</div>
-<div class="text-blue-600 font-mono text-sm">contact@nyx.foundation</div>
-</div>
-
-</div>
-
----
-
-# イーサリアム財団の動向
-
-<div class="grid grid-cols-2 gap-4">
-
-<div>
-
-- **dAI Team**: AI関連の研究開発
-- **ESP Grants**: 助成金プログラム刷新
-- **Institutional Liquidity Layer**: 機関投資家向け
-- **Ethereum Treasuries**: 企業のETH保有増加
-
-</div>
-
-<div class="flex items-center justify-center">
-
-<div class="p-6 bg-amber-100 rounded-lg text-center">
-<div class="text-2xl font-bold text-amber-700">チャンス！</div>
-</div>
-
-</div>
-</div>
-
----
-
-# イーサリアム上での資産運用
-
-<div class="grid grid-cols-2 gap-6">
-
-<div class="bg-purple-50 p-3 rounded">
-<div class="font-bold mb-2">プロ参入で戦略も高度化</div>
-<div class="text-sm">
-
-- **DEX**: JIT流動性の活用
-- **Lending**: キュレーター型ポートフォリオ管理
-
-</div>
-</div>
-
-<div class="bg-blue-50 p-3 rounded">
-<div class="font-bold mb-2">収益機会の変化</div>
-<div class="text-sm">
-
-- **BuilderNet**: ブロック構築の分散化
-- **Prover Network**: ZK証明生成への参加
-
-</div>
-</div>
-
-</div>
-
----
-
-# イーサリアム・クライアント実装の違い（EL）
-
-| | 言語 | ディスク | 特徴 |
+| 戦略 | Valid | Total | Rate |
 |---|---|---|---|
-| **Geth** | Go | 1.2TB | ロードマップ実装最速、API充実 |
-| **Erigon** | Go | 1TB | 軽量、高速同期、CL不要 |
-| **Nethermind** | .NET | 1.1TB | MEV/Flashbots標準搭載 |
-| **Besu** | Java | 1.4TB | エンタープライズ特化 |
-| **Reth** | Rust | 1.6TB | ExEx拡張、高速DB |
+| **類似バグ探索** | **14** | 34 | **41.2%** |
+| コード解析 | 2 | 18 | 11.1% |
+| Fuzzing | 1 | 2 | 50.0% |
 
----
+<div class="font-bold mb-2 mt-6">参加者別の成果</div>
 
-# イーサリアム・クライアント実装の違い（CL）
-
-| | 言語 | メモリ | 特徴 |
-|---|---|---|---|
-| **Prysm** | Go | ～5GiB | MEV機能充実 |
-| **Lighthouse** | Rust | ～5GiB | 保守性、多段防御 |
-| **Nimbus** | Nim | ～3GiB | 低メモリ |
-| **Lodestar** | JS | ～8GiB | 拡張性 |
-| **Teku** | Java | ～10GiB | Besu相性良 |
-
----
-
-# どのクライアントを選択すればいいの？
-
-| ユースケース | EL | CL |
+| 参加者 | Status | Valid |
 |---|---|---|
-| RPCノード運用 | Geth | Nimbus |
-| バリデータ運用 | Nethermind | Lighthouse / Prysm |
-| 独自実装・拡張 | Reth / Erigon | Lodestar |
-| 独自チェーン | Besu | Teku |
+| **D** | **Non-expert** | **9 (Top)** |
+| B | Hacker | 7 |
+| A | Engineer | 1 |
 
-<div class="mt-4 text-xs opacity-70">
+<!--
+結果です。
+エージェントチーム全体で54件を報告し、そのうち17件が有効（Valid）と認定され、コンテスト全体で報告件数1位となりました。
+特に、PeerDASという新機能を実装したCLクライアントで多くのバグを発見しました。
 
-※十分なインターネット速度下であればパフォーマンス・APYに特に差はない
-※RPCノード運用時はWAF設定等でセキュリティを徹底すること
-
-</div>
+右側の表をご覧ください。戦略別では「類似バグ探索」が14件と圧倒的でした。
+また、参加者別では、なんと未経験者の「参加者D」が9件のバグを見つけトップの成績でした。
+これは、適切なツールがあれば専門知識がなくても監査に貢献できることを示しています。
+-->
 
 ---
 
-# 今日のまとめ
+# 考察: なぜ有効だったのか？
 
-<div class="grid grid-cols-3 gap-4 mt-6">
+## 1. 類似バグ探索 (Semantic Search) の優位性
+- 未知の脆弱性の多くは、**「過去のバグの構造的変種」**であった。
+- LLMは意味論的（Semantic）な類似性を理解できるため、変数名が違っても「同じロジックミス」を検知できた。
+- *例: 境界値処理のミス、ロックの取得漏れ*
 
-<div class="border-2 border-amber-400 rounded-lg p-4 bg-amber-50 text-center">
-<div class="text-2xl mb-1">🧭</div>
-<div class="font-bold">ロードマップの方向性</div>
-<div class="text-xs mt-2">シンプル・柔軟性・分散性を保ったまま速く</div>
+## 2. 監査の民主化 (Democratization)
+- エンジニア経験のない**参加者Dが最も高い成果（9件）**を上げた。
+- 適切なツールと「既知のパターン」があれば、専門家でなくとも高度な監査が可能。
+- セキュリティ人材不足への有力な解。
+
+<!--
+なぜこれほど成果が出たのか考察します。
+第一に、「類似バグ探索」の優位性です。
+未知のバグといっても、実は過去のバグの「変種」であることが多いです。
+LLMは「変数名は違うがロジックは同じ」といった意味的な類似性を理解できるため、従来のツールでは見つけにくい論理バグを効率的に発見できました。
+
+第二に、「監査の民主化」です。
+ドメイン知識がない参加者Dが活躍できた事実は、AIエージェントが専門知識を補完し、セキュリティ監査への参入障壁を劇的に下げられる可能性を示唆しています。
+これは業界全体の慢性的な人材不足に対する希望と言えます。
+-->
+
+---
+
+# 誤検知 (False Positive) の要因
+
+Valid率 31.5% ということは、約7割は棄却されている。主な要因は：
+
+1. **脅威モデルの誤認**
+   - 「信頼されているコンポーネント (Trusted EL)」からの入力を疑ってしまった。
+   - 前提知識をプロンプトで厳格に定義する必要がある。
+
+2. **テストコード/非稼働コードへの指摘**
+   - ビルド対象外のモックなどを誤って監査対象に含んでしまった。
+   - マッピングモジュールの精度向上が必要。
+
+3. **仕様上の許容挙動**
+   - クライアント独自の最適化や設計判断をバグと誤認。
+
+<!--
+もちろん課題もあります。Valid率は約3割で、残りは誤検知でした。
+主な要因は「脅威モデルの誤認」です。コンテストのルールでは「実行層は信頼できる」という前提があったのに、そこからの入力を疑ってしまったりしました。
+また、テストコードや使われていないコードを誤って監査してしまったケースもありました。
+これらはプロンプトでより厳密に前提条件を与えることで改善できると考えています。
+-->
+
+---
+
+# 今後の展望: チェックリスト駆動型へ
+
+完全自律エージェントから、**「チェックリスト駆動型」**ワークフローへの進化が鍵。
+
+1. **仕様定義**: 自然言語仕様と構造化データ
+2. **トラストモデル**: 前提条件の明確化
+3. **プロパティ抽出**: 「守るべき性質」と「やってはいけない事 (Anti-Property)」
+4. **チェックリスト生成**: 仕様から具体的なコード確認項目へ変換
+5. **検証**: LLMによるパターンマッチングと論理検証
+
+<div class="mt-8 p-4 bg-blue-50 rounded-lg text-center">
+  <div class="font-bold text-blue-800">Conclusion</div>
+  <div class="mt-2 text-sm">
+    LLMエージェントは、現代の複雑な分散システムの監査において強力な武器となる。<br>特に「過去の知見」を再利用する<strong>Semantic Search</strong>と、<strong>HITL</strong>による検証プロセスの統合が有効である。
+  </div>
 </div>
 
-<div class="border-2 border-orange-400 rounded-lg p-4 bg-orange-50 text-center">
-<div class="text-2xl mb-1">📅</div>
-<div class="font-bold">直近アップグレード</div>
-<div class="text-xs mt-2">Fusaka / Glamsterdam</div>
-</div>
+<!--
+今後の展望です。
+誤検知を減らし、より深い論理バグを見つけるために、「チェックリスト駆動型」への進化を進めています。
+仕様書から「守るべき性質」をリスト化し、それを一つずつコードに照らし合わせて確認していくアプローチです。
 
-<div class="border-2 border-red-400 rounded-lg p-4 bg-red-50 text-center">
-<div class="text-2xl mb-1">🔗</div>
-<div class="font-bold">エコシステム</div>
-<div class="text-xs mt-2">zkHyperLiquid / Bitcoin DeFi / Privacy</div>
-</div>
-
-</div>
+まとめです。
+LLMエージェントは、現代の複雑なシステムの監査において強力な武器になります。
+特に「過去の知見の再利用」と「人間の判断を組み合わせたプロセス」が有効であることが今回の実験で示されました。
+以上で発表を終わります。
+-->
 
 ---
 layout: cover
 ---
 
 # Thank you!
+
+ご清聴ありがとうございました。
+<div class="mt-8"></div>
+<div class="text-sm opacity-80">
+  This work was supported by Nyx Foundation.
+</div>
+
+<!--
+ご清聴ありがとうございました。
+-->

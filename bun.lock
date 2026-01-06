@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "nyx-slidev-template",
+      "name": "scis2026-security-agent-presentation",
       "dependencies": {
         "@slidev/cli": "^52.11.1",
         "@slidev/theme-default": "latest",
