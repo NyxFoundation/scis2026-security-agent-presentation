@@ -1,0 +1,38 @@
+flowchart TB
+    %% EIP-4844: BLOBHASH Opcode Sub-Graph
+    %% Implements versioned hash retrieval for blob transactions
+    
+    %% Style definitions
+    classDef stateNode fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef actionNode fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef dataNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    
+    subgraph EIP4844["EIP-4844: BLOBHASH Opcode"]
+        STATE-BLOBHASH-START["BLOBHASH<br/>Opcode Called"]
+        ACTION-POP-INDEX["Pop Index<br/>from Stack"]
+        ACTION-CHECK-BOUNDS["Check Index<br/>Bounds"]
+        STATE-INDEX-OUT-OF-BOUNDS["Index >= len(hashes)<br/>Return Zero"]
+        ACTION-GET-VERSIONED-HASH["Get Versioned Hash<br/>from BlobHashes"]
+        STATE-BLOBHASH-RESULT["Push Result<br/>to Stack"]
+    end
+    
+    subgraph DATA["Data Structures"]
+        DATA-BLOB-HASHES["BlobHashes[]<br/>(from TxContext)"]
+        DATA-VERSIONED-HASH["Versioned Hash<br/>(0x01 || KZG[1:])"]
+    end
+    
+    %% Edges
+    STATE-BLOBHASH-START --> ACTION-POP-INDEX
+    ACTION-POP-INDEX --> ACTION-CHECK-BOUNDS
+    ACTION-CHECK-BOUNDS -->|"out of bounds"| STATE-INDEX-OUT-OF-BOUNDS
+    ACTION-CHECK-BOUNDS -->|"valid index"| ACTION-GET-VERSIONED-HASH
+    ACTION-GET-VERSIONED-HASH --> STATE-BLOBHASH-RESULT
+    STATE-INDEX-OUT-OF-BOUNDS --> STATE-BLOBHASH-RESULT
+    
+    DATA-BLOB-HASHES -.->|"lookup"| ACTION-GET-VERSIONED-HASH
+    ACTION-GET-VERSIONED-HASH -.->|"returns"| DATA-VERSIONED-HASH
+    
+    %% Apply styles
+    class STATE-BLOBHASH-START,STATE-INDEX-OUT-OF-BOUNDS,STATE-BLOBHASH-RESULT stateNode
+    class ACTION-POP-INDEX,ACTION-CHECK-BOUNDS,ACTION-GET-VERSIONED-HASH actionNode
+    class DATA-BLOB-HASHES,DATA-VERSIONED-HASH dataNode
