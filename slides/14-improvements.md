@@ -13,7 +13,6 @@ layout: default
 </div>
 
 <div class="grid grid-cols-2 gap-2">
-
 <div>
   <div class="font-bold text-xs mb-1 text-blue-700">Program Graph: 仕様の形式化</div>
   <div class="p-1.5 bg-blue-50 rounded border border-blue-200">
@@ -22,7 +21,6 @@ layout: default
       <strong>CL/ELをTRUSTED</strong>として明示定義、<strong>信頼境界</strong>を越えるエッジを重点監査
     </div>
   </div>
-
   <div class="font-bold text-xs mb-1 mt-1.5 text-green-700">EIP別サブグラフ（例: EIP-4844 BLOBHASH）</div>
   <div class="p-1 bg-green-50 rounded border border-green-200">
     <img src="/images/program_graph_eip4844.png" class="w-full max-h-28 object-contain rounded" />
@@ -31,7 +29,6 @@ layout: default
     </div>
   </div>
 </div>
-
 <div>
   <div class="font-bold text-xs mb-1 text-purple-700">Geth監査デモ: Fusakaの課題への対応</div>
   <div class="p-1.5 bg-purple-50 rounded border border-purple-200 text-[9px]">
@@ -54,7 +51,6 @@ layout: default
       </div>
     </div>
   </div>
-
   <div class="font-bold text-xs mb-1 mt-1.5 text-orange-700">AUDITMAPでの監査結果</div>
   <div class="p-1.5 bg-orange-50 rounded border border-orange-200 text-[9px]">
     <div class="bg-white p-1 rounded">
@@ -68,7 +64,6 @@ layout: default
     </div>
   </div>
 </div>
-
 </div>
 
 <!--

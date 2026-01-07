@@ -60,13 +60,17 @@ src: ./slides/14-improvements.md
 ---
 
 ---
-src: ./slides/15-conclusion.md
+src: ./slides/15-results.md
 ---
 
 ---
-src: ./slides/16-thankyou.md
+src: ./slides/16-conclusion.md
 ---
 
 ---
-src: ./slides/17-appendix.md
+src: ./slides/17-thankyou.md
+---
+
+---
+src: ./slides/18-appendix.md
 ---
