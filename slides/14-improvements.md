@@ -8,80 +8,133 @@ layout: default
 
 # コンテスト後の改善: Program Graphベースのアーキテクチャ
 
-<div class="text-xs text-gray-600 mb-1">
-  Fusakaコンテストの課題を受け、アーキテクチャを刷新し、Geth監査デモで有効性を検証
+<div class="text-xs text-gray-600 mb-3">
+  Fusakaコンテストの課題を受け、4フェーズの構造化ワークフローに刷新
 </div>
 
-<div class="grid grid-cols-2 gap-2">
-<div>
-  <div class="font-bold text-xs mb-1 text-blue-700">Program Graph: 仕様の形式化</div>
-  <div class="p-1.5 bg-blue-50 rounded border border-blue-200">
-    <img src="/images/program_graph_main.png" class="w-full max-h-32 object-contain rounded" />
-    <div class="text-[8px] text-gray-600 text-center">
-      <strong>CL/ELをTRUSTED</strong>として明示定義、<strong>信頼境界</strong>を越えるエッジを重点監査
+<div class="grid grid-cols-4 gap-2 h-[75%]">
+
+  <!-- Phase 1: SPEC -->
+  <div class="bg-blue-50 border border-blue-300 rounded p-2 flex flex-col">
+    <div class="text-center mb-1">
+      <div class="font-bold text-blue-700 text-xs">Phase 1: SPEC</div>
+      <div class="text-[9px] text-gray-600">仕様の形式化</div>
     </div>
-  </div>
-  <div class="font-bold text-xs mb-1 mt-1.5 text-green-700">EIP別サブグラフ（例: EIP-4844 BLOBHASH）</div>
-  <div class="p-1 bg-green-50 rounded border border-green-200">
-    <img src="/images/program_graph_eip4844.png" class="w-full max-h-28 object-contain rounded" />
-    <div class="text-[7px] text-gray-600 text-center">
-      KZG commitment検証を含む20のEIP別サブグラフを定義
-    </div>
-  </div>
-</div>
-<div>
-  <div class="font-bold text-xs mb-1 text-purple-700">Geth監査デモ: Fusakaの課題への対応</div>
-  <div class="p-1.5 bg-purple-50 rounded border border-purple-200 text-[9px]">
-    <div class="mb-0.5 text-gray-700 font-bold text-[9px]">✅ 課題1: 脅威モデルの不整合 → 解決</div>
-    <div class="bg-white p-1 rounded mb-1.5 text-[8px]">
-      <code class="text-blue-600">01b_TRUSTMODEL.json</code>で<strong>ELをTRUSTED</strong>と明示定義
-    </div>
-    <div class="mb-0.5 text-gray-700 font-bold text-[9px]">✅ 課題2: チェックリストの網羅性 → 解決</div>
-    <div class="bg-white p-1 rounded mb-1.5 text-[8px]">
-      <div class="flex justify-between">
-        <span>境界チェック <span class="text-blue-600 font-bold">40項目</span></span>
-        <span>プロパティ <span class="text-blue-600 font-bold">180項目</span></span>
+    <div class="flex-grow flex flex-col justify-center">
+      <img src="/images/program_graph_main.png" class="w-full max-h-28 object-contain rounded mb-1" />
+      <div class="text-[7px] text-gray-600 text-center">
+        <code class="bg-white px-0.5 rounded">01_SPEC.json</code>
       </div>
-      <div class="text-gray-500">→ 合計<strong>220チェック</strong>を自動生成</div>
-    </div>
-    <div class="mb-0.5 text-gray-700 font-bold text-[9px]">✅ 課題3: 暗号検証の不足 → 解決</div>
-    <div class="bg-white p-1 rounded text-[8px]">
-      <div class="text-[7px] text-gray-500 italic">
-        "Verify KZG commitment computation in crypto/kzg4844/"
+      <div class="text-[7px] text-center mt-1 space-y-0.5">
+        <div><strong>29</strong> ノード</div>
+        <div><strong>32</strong> エッジ</div>
+        <div><strong>20</strong> サブグラフ</div>
       </div>
     </div>
   </div>
-  <div class="font-bold text-xs mb-1 mt-1.5 text-orange-700">AUDITMAPでの監査結果</div>
-  <div class="p-1.5 bg-orange-50 rounded border border-orange-200 text-[9px]">
-    <div class="bg-white p-1 rounded">
-      <div class="flex justify-between text-[9px]">
-        <span>監査済み <span class="text-blue-600 font-bold">100件</span></span>
-        <span>verified-secure <span class="text-green-600 font-bold">80件 (80%)</span></span>
+
+  <!-- Phase 2: TRUSTMODEL -->
+  <div class="bg-green-50 border border-green-300 rounded p-2 flex flex-col">
+    <div class="text-center mb-1">
+      <div class="font-bold text-green-700 text-xs">Phase 2: TRUSTMODEL</div>
+      <div class="text-[9px] text-gray-600">信頼境界定義</div>
+    </div>
+    <div class="flex-grow flex flex-col justify-center">
+      <div class="text-[7px] text-gray-600 text-center mb-1">
+        <code class="bg-white px-0.5 rounded">01b_TRUSTMODEL.json</code>
       </div>
-      <div class="text-[8px] text-gray-500 mt-0.5">
-        → 5つの攻撃ベクトル分析 + Guard Analysis適用
+      <div class="bg-white p-1.5 rounded text-[7px] font-mono space-y-1">
+        <div class="flex justify-between">
+          <span>CL</span>
+          <span class="text-green-600 font-bold">TRUSTED</span>
+        </div>
+        <div class="flex justify-between">
+          <span>EL</span>
+          <span class="text-green-600 font-bold">TRUSTED</span>
+        </div>
+        <div class="flex justify-between">
+          <span>User</span>
+          <span class="text-red-600 font-bold">UNTRUSTED</span>
+        </div>
+        <div class="flex justify-between">
+          <span>P2P</span>
+          <span class="text-yellow-600 font-bold">SEMI_TRUSTED</span>
+        </div>
+      </div>
+      <div class="text-[7px] text-center mt-2 text-green-700 font-bold">
+        8アクター定義
+      </div>
+      <div class="text-[7px] text-center mt-1 text-gray-600">
+        → ELをTRUSTEDと明示
       </div>
     </div>
   </div>
-</div>
+
+  <!-- Phase 3: CHECKLIST -->
+  <div class="bg-purple-50 border border-purple-300 rounded p-2 flex flex-col">
+    <div class="text-center mb-1">
+      <div class="font-bold text-purple-700 text-xs">Phase 3: CHECKLIST</div>
+      <div class="text-[9px] text-gray-600">監査項目生成</div>
+    </div>
+    <div class="flex-grow flex flex-col justify-center">
+      <div class="text-[7px] text-gray-600 text-center mb-1">
+        <code class="bg-white px-0.5 rounded">02a/02b_*.json</code>
+      </div>
+      <div class="bg-white p-1.5 rounded text-[6px] font-mono">
+        <div class="text-gray-500">// 境界チェック例</div>
+        <div class="truncate">"Verify Trust Boundary for EDGE-USER-SUBMIT-TX"</div>
+        <div class="text-gray-500 mt-1">// KZG検証</div>
+        <div class="truncate">"Verify KZG commitment in crypto/kzg4844/"</div>
+      </div>
+      <div class="mt-2 space-y-1 text-[8px] text-center">
+        <div>境界: <strong>40</strong>項目</div>
+        <div>プロパティ: <strong>180</strong>項目</div>
+        <div class="text-purple-700 font-bold">計: 220項目</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 4: AUDITMAP -->
+  <div class="bg-orange-50 border border-orange-300 rounded p-2 flex flex-col">
+    <div class="text-center mb-1">
+      <div class="font-bold text-orange-700 text-xs">Phase 4: AUDITMAP</div>
+      <div class="text-[9px] text-gray-600">5攻撃ベクトル分析</div>
+    </div>
+    <div class="flex-grow flex flex-col justify-center">
+      <div class="text-[7px] text-gray-600 text-center mb-1">
+        <code class="bg-white px-0.5 rounded">03_AUDITMAP_*.json</code>
+      </div>
+      <div class="bg-white p-1.5 rounded text-[6px] font-mono">
+        <div>"attack_vector_analysis":</div>
+        <div class="ml-1">• input_validation_bypass</div>
+        <div class="ml-1">• state_transition_violation</div>
+        <div class="ml-1">• resource_exhaustion</div>
+        <div class="ml-1">• faulty_error_handling</div>
+        <div class="ml-1">• race_conditions</div>
+      </div>
+      <div class="bg-white p-1 rounded mt-1 text-[7px] text-center">
+        <span class="text-gray-500">classification:</span>
+        <span class="text-green-600 font-bold">verified-secure</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!--
-Fusakaコンテストの課題を受け、アーキテクチャを刷新しました。
-これは「今後の計画」ではなく、既に実装・検証済みの改善策です。
+Fusakaコンテストの課題を受け、アーキテクチャを4フェーズの構造化ワークフローに刷新しました。
 
-左側にProgram Graphの実際の出力を示しています。
-Consensus Layer (CL) と Execution Layer (EL) の両方がTRUSTEDとして明示的に定義されています。
-これにより、Fusakaで問題となった「ELを信頼しない」という誤った脅威モデルを根本的に解決しています。
+Phase 1のSPECでは、仕様をProgram Graphとして形式化します。
+29ノード、32エッジ、20のEIP別サブグラフを定義しています。
 
-EIP-4844 BLOBHASHのサブグラフも示しています。
-このようにEIP別に20のサブグラフを定義し、KZG commitment検証などの暗号処理も監査対象としています。
+Phase 2のTRUSTMODELでは、8アクターの信頼レベルを明示的に定義します。
+CLとELをTRUSTED、UserをUNTRUSTED、P2PをSEMI_TRUSTEDと定義しています。
+これにより、Fusakaで問題となった脅威モデル不整合を解決しました。
 
-右側にGeth監査デモの結果を示しています。
-課題1の脅威モデル不整合は、01b_TRUSTMODEL.jsonでELをTRUSTEDと明示定義することで解決しました。
-課題2のチェックリスト網羅性は、合計220チェックを自動生成することで解決しました。
-課題3の暗号検証不足は、KZG commitment検証をチェックリストに含めることで解決しました。
+Phase 3のCHECKLISTでは、Program Graphから監査項目を自動生成します。
+境界チェック40項目、プロパティチェック180項目、合計220項目です。
+KZG commitment検証なども含まれています。
 
-AUDITMAPでは100件を監査し、80件がverified-secureと判定されました。
-5つの攻撃ベクトル分析とGuard Analysisを全件に適用しています。
+Phase 4のAUDITMAPでは、各チェック項目に対して5つの攻撃ベクトルを体系的に分析します。
+分析結果はverified-secureなどの分類で出力されます。
 -->
