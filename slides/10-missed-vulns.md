@@ -17,60 +17,60 @@ layout: default
 <div class="grid grid-cols-2 gap-3">
 
 <div>
-  <div class="font-bold text-sm mb-1 text-gray-700">見逃したHigh脆弱性（5件）</div>
-  <div class="space-y-1 text-[10px]">
-    <div class="bg-red-50 p-1.5 rounded border border-red-200">
-      <div class="flex items-center gap-2">
-        <span class="bg-red-600 text-white px-1.5 py-0.5 rounded text-[9px] font-bold">High</span>
+  <div class="font-bold text-[11px] mb-0.5 text-gray-700">見逃したHigh脆弱性（5件）</div>
+  <div class="space-y-0.5 text-[9px]">
+    <div class="bg-red-50 p-1 rounded border border-red-200">
+      <div class="flex items-center gap-1">
+        <span class="bg-red-600 text-white px-1 py-0.5 rounded text-[8px] font-bold">High</span>
         <span class="font-bold">#40: Proposer計算エラー</span>
       </div>
-      <div class="text-gray-600 mt-0.5">proposer lookaheadの考慮漏れ</div>
+      <div class="text-gray-600">proposer lookaheadの考慮漏れ</div>
     </div>
-    <div class="bg-red-50 p-1.5 rounded border border-red-200">
-      <div class="flex items-center gap-2">
-        <span class="bg-red-600 text-white px-1.5 py-0.5 rounded text-[9px] font-bold">High</span>
+    <div class="bg-red-50 p-1 rounded border border-red-200">
+      <div class="flex items-center gap-1">
+        <span class="bg-red-600 text-white px-1 py-0.5 rounded text-[8px] font-bold">High</span>
         <span class="font-bold">#190: Prysm キャッシュ汚染</span>
       </div>
-      <div class="text-gray-600 mt-0.5">data column sidecar検証のキャッシュ不整合</div>
+      <div class="text-gray-600">data column sidecar検証のキャッシュ不整合</div>
     </div>
-    <div class="bg-red-50 p-1.5 rounded border border-red-200">
-      <div class="flex items-center gap-2">
-        <span class="bg-red-600 text-white px-1.5 py-0.5 rounded text-[9px] font-bold">High</span>
+    <div class="bg-red-50 p-1 rounded border border-red-200">
+      <div class="flex items-center gap-1">
+        <span class="bg-red-600 text-white px-1 py-0.5 rounded text-[8px] font-bold">High</span>
         <span class="font-bold">#203: c-kzg Fiat-Shamir</span>
       </div>
-      <div class="text-gray-600 mt-0.5">外部暗号ライブラリの脆弱性</div>
+      <div class="text-gray-600">外部暗号ライブラリの脆弱性</div>
     </div>
-    <div class="bg-red-50 p-1.5 rounded border border-red-200">
-      <div class="flex items-center gap-2">
-        <span class="bg-red-600 text-white px-1.5 py-0.5 rounded text-[9px] font-bold">High</span>
+    <div class="bg-red-50 p-1 rounded border border-red-200">
+      <div class="flex items-center gap-1">
+        <span class="bg-red-600 text-white px-1 py-0.5 rounded text-[8px] font-bold">High</span>
         <span class="font-bold">#176: Nethermind blob処理</span>
       </div>
-      <div class="text-gray-600 mt-0.5">不正blob txによるバリデータ停止</div>
+      <div class="text-gray-600">不正blob txによるバリデータ停止</div>
     </div>
-    <div class="bg-red-50 p-1.5 rounded border border-red-200">
-      <div class="flex items-center gap-2">
-        <span class="bg-red-600 text-white px-1.5 py-0.5 rounded text-[9px] font-bold">High</span>
+    <div class="bg-red-50 p-1 rounded border border-red-200">
+      <div class="flex items-center gap-1">
+        <span class="bg-red-600 text-white px-1 py-0.5 rounded text-[8px] font-bold">High</span>
         <span class="font-bold">#210: Nethermind blob検証</span>
       </div>
-      <div class="text-gray-600 mt-0.5">blob hashと実データの不整合を許容</div>
+      <div class="text-gray-600">blob hashと実データの不整合を許容</div>
     </div>
   </div>
-  
-  <div class="font-bold text-sm mb-1 mt-2 text-gray-700">見逃したMedium脆弱性（2件）</div>
-  <div class="space-y-1 text-[10px]">
-    <div class="bg-orange-50 p-1.5 rounded border border-orange-200">
-      <div class="flex items-center gap-2">
-        <span class="bg-orange-600 text-white px-1.5 py-0.5 rounded text-[9px] font-bold">Med</span>
+
+  <div class="font-bold text-[11px] mb-0.5 mt-1 text-gray-700">見逃したMedium脆弱性（2件）</div>
+  <div class="space-y-0.5 text-[9px]">
+    <div class="bg-orange-50 p-1 rounded border border-orange-200">
+      <div class="flex items-center gap-1">
+        <span class="bg-orange-600 text-white px-1 py-0.5 rounded text-[8px] font-bold">Med</span>
         <span class="font-bold">#15: Nimbus DoS</span>
       </div>
-      <div class="text-gray-600 mt-0.5">大きなcustody group countによるリモートDoS</div>
+      <div class="text-gray-600">大きなcustody group countによるリモートDoS</div>
     </div>
-    <div class="bg-orange-50 p-1.5 rounded border border-orange-200">
-      <div class="flex items-center gap-2">
-        <span class="bg-orange-600 text-white px-1.5 py-0.5 rounded text-[9px] font-bold">Med</span>
+    <div class="bg-orange-50 p-1 rounded border border-orange-200">
+      <div class="flex items-center gap-1">
+        <span class="bg-orange-600 text-white px-1 py-0.5 rounded text-[8px] font-bold">Med</span>
         <span class="font-bold">#216: Nimbus metadata</span>
       </div>
-      <div class="text-gray-600 mt-0.5">Fuluフォーク後の古いmetadata使用</div>
+      <div class="text-gray-600">Fuluフォーク後の古いmetadata使用</div>
     </div>
   </div>
 </div>
