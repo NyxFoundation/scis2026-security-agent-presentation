@@ -30,6 +30,13 @@ layout: default
       <span>チェックリスト・類似バグリスト作成</span>
     </div>
   </div>
+  
+  <div class="mt-2 bg-blue-50 p-2 rounded text-[10px] font-mono border border-blue-200">
+    <div class="text-blue-600 font-bold mb-1">実際の出力例: 01_SPEC.json</div>
+    <div class="text-gray-700">├─ architecture.components: <span class="text-green-600 font-bold">10件</span></div>
+    <div class="text-gray-700">├─ security_requirements: <span class="text-green-600 font-bold">8件</span></div>
+    <div class="text-gray-700">└─ threats.attack_paths: <span class="text-orange-600 font-bold">12件</span></div>
+  </div>
 
   <div class="font-bold text-green-700 mb-1 mt-2 text-sm">Phase 2: 監査（3戦略の並行実行）</div>
   <div class="p-2 bg-gray-50 rounded-lg text-xs space-y-1">
@@ -74,6 +81,12 @@ layout: default
       <span class="bg-yellow-200 px-3 py-1 rounded font-bold">レポート出力</span>
     </div>
   </div>
+  
+  <div class="mt-2 bg-green-50 p-2 rounded text-[10px] font-mono border border-green-200">
+    <div class="text-green-600 font-bold mb-1">実際の出力例: 03_AUDITMAP.json</div>
+    <div class="text-gray-700">id: "P2P-001", risk: "DoS-Memory"</div>
+    <div class="text-gray-700">status: <span class="text-green-600">"ok"</span> | <span class="text-orange-600">"needs-review"</span></div>
+  </div>
 </div>
 
 </div>
@@ -88,10 +101,12 @@ layout: default
 本手法の核心は、単なるツール実行の自動化ではなく、「熟練監査員の思考プロセス」の構造化にあります。
 
 Phase 1は「知識の構造化」フェーズです。
-仕様書（EIP）から要件を構造データとして抽出し、実装コードとマッピングを行います。これにより、AIが「何を検証すべきか」を正確に理解できる状態を作ります。
+仕様書（EIP）から要件を構造データとして抽出し、実装コードとマッピングを行います。
+実際の出力例として、01_SPEC.jsonにはアーキテクチャコンポーネント10件、セキュリティ要件8件、攻撃パス12件が含まれます。
 
 Phase 2は「監査の実行」フェーズです。
 ここでは「仕様ベース静的検査」「類似バグ探索」「動的テスト生成」という、監査員が実際に行う3つの戦略を並行して実行させます。
+03_AUDITMAP.jsonには、各チェックポイントのID、リスクカテゴリ、判定ステータスが記録されます。
 
 このように、人間の専門知見をプロンプトとして形式化し、それをAIによってスケールさせることが本研究の狙いです。
 -->

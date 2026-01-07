@@ -6,87 +6,124 @@ layout: default
   <img src="/images/nyx_icon.svg" class="h-8 opacity-60" />
 </div>
 
-# 驚くべき成果：報告件数No.1と「監査の民主化」
+# 結果サマリー
 
-<div class="flex justify-center items-center gap-8 mt-2 mb-4">
-  <div class="text-center p-4 bg-blue-50 rounded-lg">
-    <div class="text-5xl font-bold text-blue-600 mb-1">17件</div>
-    <div class="text-sm text-gray-600">有効脆弱性</div>
-    <div class="text-xs text-red-600 font-bold mt-1">報告件数 No.1</div>
-  </div>
-  <div class="text-center p-4 bg-green-50 rounded-lg">
-    <div class="text-5xl font-bold text-green-600 mb-1">31.5%</div>
-    <div class="text-sm text-gray-600">Valid率</div>
-    <div class="text-xs text-gray-500 mt-1">（全体平均: 27.6%）</div>
-  </div>
+<div class="text-sm text-gray-600 mb-3">
+  Fusakaコンテストにおける我々の成績
 </div>
 
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-2 gap-4">
 
 <div>
-  <div class="font-bold text-sm mb-2 text-center">戦略別 発見件数（グラフ）</div>
-  <div class="bg-gray-50 p-3 rounded-lg">
-    <div class="flex items-end gap-2 justify-center h-32">
-      <div class="flex flex-col items-center">
-        <div class="bg-green-500 w-16 rounded-t" style="height: 100px"></div>
-        <div class="text-xs mt-1">類似探索</div>
-        <div class="text-sm font-bold text-green-600">13件</div>
+  <div class="font-bold text-sm mb-2 text-center">報告件数と有効性</div>
+  
+  <div class="bg-blue-50 p-3 rounded-lg border border-blue-200 mb-3">
+    <div class="grid grid-cols-3 gap-2 text-center">
+      <div>
+        <div class="text-2xl font-bold text-blue-700">54</div>
+        <div class="text-xs text-gray-600">総報告数</div>
       </div>
-      <div class="flex flex-col items-center">
-        <div class="bg-blue-500 w-16 rounded-t" style="height: 23px"></div>
-        <div class="text-xs mt-1">コード解析</div>
-        <div class="text-sm font-bold text-blue-600">3件</div>
+      <div>
+        <div class="text-2xl font-bold text-green-600">17</div>
+        <div class="text-xs text-gray-600">Valid</div>
       </div>
-      <div class="flex flex-col items-center">
-        <div class="bg-purple-500 w-16 rounded-t" style="height: 8px"></div>
-        <div class="text-xs mt-1">Fuzzing</div>
-        <div class="text-sm font-bold text-purple-600">1件</div>
+      <div>
+        <div class="text-2xl font-bold text-red-500">37</div>
+        <div class="text-xs text-gray-600">Invalid</div>
+      </div>
+    </div>
+    <div class="mt-2 text-center text-sm">
+      <span class="text-green-600 font-bold">Valid率: 31.5%</span>
+    </div>
+  </div>
+
+  <div class="bg-gray-50 p-2 rounded-lg text-xs">
+    <div class="font-bold mb-1">重要度別 (Valid 17件)</div>
+    <div class="grid grid-cols-4 gap-1 text-center">
+      <div class="bg-red-100 p-1 rounded">
+        <div class="font-bold text-red-600">0</div>
+        <div class="text-[10px]">High</div>
+      </div>
+      <div class="bg-orange-100 p-1 rounded">
+        <div class="font-bold text-orange-600">0</div>
+        <div class="text-[10px]">Medium</div>
+      </div>
+      <div class="bg-yellow-100 p-1 rounded">
+        <div class="font-bold text-yellow-600">1</div>
+        <div class="text-[10px]">Low</div>
+      </div>
+      <div class="bg-blue-100 p-1 rounded">
+        <div class="font-bold text-blue-600">16</div>
+        <div class="text-[10px]">Info</div>
       </div>
     </div>
   </div>
 </div>
 
 <div>
-  <div class="font-bold text-sm mb-2 text-yellow-700 text-center">「監査の民主化」の実証</div>
-  <div class="p-3 bg-yellow-50 rounded-lg border-2 border-yellow-400">
-    <div class="text-sm mb-2">
-      <strong>非専門家が最多のバグを発見！</strong>
+  <div class="font-bold text-sm mb-2 text-center">発見手法別の内訳</div>
+  
+  <div class="space-y-2">
+    <div class="bg-green-50 p-2 rounded-lg border-l-4 border-green-500">
+      <div class="flex justify-between items-center">
+        <span class="font-bold text-sm">類似バグ探索</span>
+        <span class="text-green-700 font-bold">13件 (76.5%)</span>
+      </div>
+      <div class="text-xs text-gray-600">既知パターンの横展開が最も効果的</div>
     </div>
-    <div class="space-y-1 text-xs">
-      <div class="flex justify-between bg-yellow-100 p-2 rounded font-bold">
-        <span>vita (非専門家)</span>
-        <span class="text-red-600 text-lg">8件 (Top)</span>
+    <div class="bg-blue-50 p-2 rounded-lg border-l-4 border-blue-500">
+      <div class="flex justify-between items-center">
+        <span class="font-bold text-sm">コード解析</span>
+        <span class="text-blue-700 font-bold">3件 (17.6%)</span>
       </div>
-      <div class="flex justify-between border-t pt-1">
-        <span>gohan (著者)</span>
-        <span>7件</span>
+      <div class="text-xs text-gray-600">仕様違反の静的検出</div>
+    </div>
+    <div class="bg-purple-50 p-2 rounded-lg border-l-4 border-purple-500">
+      <div class="flex justify-between items-center">
+        <span class="font-bold text-sm">Fuzzテスト</span>
+        <span class="text-purple-700 font-bold">1件 (5.9%)</span>
       </div>
-      <div class="flex justify-between border-t pt-1">
-        <span>他2名</span>
-        <span>2件</span>
+      <div class="text-xs text-gray-600">動的テストによる発見</div>
+    </div>
+  </div>
+
+  <div class="mt-3 bg-yellow-50 p-2 rounded-lg border border-yellow-300">
+    <div class="font-bold text-sm text-yellow-800 mb-1">監査者別 (Valid)</div>
+    <div class="grid grid-cols-4 gap-1 text-center text-xs">
+      <div class="bg-white p-1 rounded">
+        <div class="font-bold">vita</div>
+        <div class="text-yellow-700">8件</div>
+      </div>
+      <div class="bg-white p-1 rounded">
+        <div class="font-bold">gohan</div>
+        <div class="text-yellow-700">7件</div>
+      </div>
+      <div class="bg-white p-1 rounded">
+        <div class="font-bold">adachi</div>
+        <div class="text-yellow-700">1件</div>
+      </div>
+      <div class="bg-white p-1 rounded">
+        <div class="font-bold">tei</div>
+        <div class="text-yellow-700">1件</div>
       </div>
     </div>
-    <div class="mt-2 text-xs text-gray-600">
-      適切なコンテキストがあれば、専門知識がなくても脆弱性発見が可能
+    <div class="text-[10px] text-gray-600 mt-1 text-center">
+      非専門家(vita)が最多のバグを発見 → <strong>監査の民主化</strong>
     </div>
   </div>
 </div>
 
-</div>
-
-<div class="absolute bottom-2 left-2 text-[8px] text-gray-400 max-w-[90%] leading-relaxed">
-  <div><strong class="text-gray-500">[コンテスト結果]</strong> https://audits.sherlock.xyz/contests/1140</div>
 </div>
 
 <!--
-結果の詳細です。
+結果サマリーです。
 
-有効報告数は17件で、コンテスト参加者中、最多の報告件数となりました。
-Valid率も31.5%と、全体平均の27.6%を上回っています。
+総報告数54件のうち、Valid判定は17件で、Valid率は31.5%でした。
+重要度別では、High 0件、Medium 0件、Low 1件、Info 16件という結果でした。
 
-左のグラフをご覧ください。
-戦略別の有効性では「類似バグ探索」が圧倒的で、有効なバグの76.5%を占めています。
+発見手法別では、類似バグ探索が13件で76.5%と圧倒的に効果的でした。
+コード解析が3件で17.6%、Fuzzテストが1件で5.9%でした。
 
-右側に注目していただきたいのですが、深いエンジニアリング経験を持たないvita氏が、チーム内で最多の8件のバグを発見しました。
-これは「監査の民主化」、つまり専門家でなくとも適切なツールがあれば監査に参加できることを実証した重要な結果です。
+監査者別では、非専門家のvitaが8件で最多、著者のgohanが7件、adachiとteiがそれぞれ1件でした。
+特筆すべきは、非専門家のvitaが最多のバグを発見したことで、「監査の民主化」を実証しています。
 -->
