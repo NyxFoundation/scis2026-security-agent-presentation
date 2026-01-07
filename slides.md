@@ -54,9 +54,6 @@ src: ./slides/11-false-positive-analysis.md
 src: ./slides/12-academic-contributions.md
 ---
 
----
-src: ./slides/13-business-message.md
----
 
 ---
 src: ./slides/14-improvements.md

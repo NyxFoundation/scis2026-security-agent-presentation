@@ -8,88 +8,99 @@ layout: default
 
 # 課題：なぜHigh/Mediumの脆弱性を見逃したのか？
 
-<div class="grid grid-cols-2 gap-4 mt-2">
-
+<!-- 上段: メッセージ -->
 <div>
-  <div class="bg-red-50 p-2 rounded-lg border-2 border-red-400 mb-2">
-    <div class="text-center text-2xl font-bold text-red-600 mb-1">
-      High/Medium: 発見率 0%
-    </div>
-    <div class="text-xs space-y-1">
-      <div class="flex justify-between bg-red-100 p-1 rounded font-bold text-red-700">
-        <span>High</span>
-        <span>全体5件 → 発見0件</span>
-      </div>
-      <div class="flex justify-between bg-orange-100 p-1 rounded font-bold text-orange-700">
-        <span>Medium</span>
-        <span>全体2件 → 発見0件</span>
-      </div>
-      <div class="flex justify-between p-1">
-        <span>Low</span>
-        <span>全体8件 → 発見1件</span>
-      </div>
+  <div class="bg-red-50 p-3 rounded-lg border-2 border-red-400 mb-4 text-center">
+    <div class="text-sm text-gray-700">
+      我々はコンテスト中に7件の<strong>High/Medium脆弱性を見逃しました</strong>。<br>
+      これらは全て、他チームによって発見・報告されました。
     </div>
   </div>
 
-  <div class="font-bold text-xs mb-1">根本原因</div>
-  <div class="space-y-1 text-xs">
-    <div class="flex items-start gap-2 p-1 bg-gray-50 rounded">
-      <span class="bg-red-600 text-white px-1 rounded text-xs">1</span>
-      <div><strong>仕様外バグ</strong>: 暗号ライブラリ等</div>
-    </div>
-    <div class="flex items-start gap-2 p-1 bg-gray-50 rounded">
-      <span class="bg-orange-500 text-white px-1 rounded text-xs">2</span>
-      <div><strong>複雑な状態遷移</strong>: キャッシュ整合性</div>
-    </div>
-    <div class="flex items-start gap-2 p-1 bg-gray-50 rounded">
-      <span class="bg-yellow-500 text-white px-1 rounded text-xs">3</span>
-      <div><strong>動的解析未実施</strong>: Fuzzing不足</div>
-    </div>
+  <div class="font-bold text-sm mb-2 text-gray-700">見逃した主な脆弱性と要因</div>
+  
+  <div class="overflow-x-auto">
+    <table class="w-full text-xs border-collapse">
+      <thead>
+        <tr class="bg-gray-100 text-gray-700">
+          <th class="p-2 border text-left w-12">ID</th>
+          <th class="p-2 border text-left w-12">Sev</th>
+          <th class="p-2 border text-left w-20">Client</th>
+          <th class="p-2 border text-left">Summary</th>
+          <th class="p-2 border text-left w-32">Why Missed?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- High: Crypto, Scope -->
+        <tr class="border-b">
+          <td class="p-2 border font-bold">#203</td>
+          <td class="p-2 border font-bold text-red-600">High</td>
+          <td class="p-2 border text-gray-600">c-kzg</td>
+          <td class="p-2 border">
+            <div>Weak Fiat-Shamir in proof verification</div>
+            <div class="text-[10px] text-gray-500">外部暗号ライブラリの脆弱性</div>
+          </td>
+          <td class="p-2 border bg-red-50 text-red-800 font-bold">Scope Out</td>
+        </tr>
+        <!-- High: Complex State -->
+        <tr class="border-b">
+          <td class="p-2 border font-bold">#190</td>
+          <td class="p-2 border font-bold text-red-600">High</td>
+          <td class="p-2 border text-gray-600">Prysm</td>
+          <td class="p-2 border">
+            <div>Incorrect Caching of inclusion proof</div>
+            <div class="text-[10px] text-gray-500">データ包含証明のキャッシュ不整合</div>
+          </td>
+          <td class="p-2 border bg-orange-50 text-orange-800 font-bold">Complex State</td>
+        </tr>
+        <!-- High: Dynamic Gap -->
+        <tr class="border-b">
+          <td class="p-2 border font-bold">#176</td>
+          <td class="p-2 border font-bold text-red-600">High</td>
+          <td class="p-2 border text-gray-600">Nethermind</td>
+          <td class="p-2 border">
+            <div>Malformed blob tx causes validator stop</div>
+            <div class="text-[10px] text-gray-500">不正Blobによるバリデータ停止</div>
+          </td>
+          <td class="p-2 border bg-yellow-50 text-yellow-800 font-bold">Fuzzing Gap</td>
+        </tr>
+        <!-- High: Spec Nuance -->
+        <tr class="border-b">
+          <td class="p-2 border font-bold">#40</td>
+          <td class="p-2 border font-bold text-red-600">High</td>
+          <td class="p-2 border text-gray-600">Specs</td>
+          <td class="p-2 border">
+            <div>Proposer lookahead not considered</div>
+            <div class="text-[10px] text-gray-500">Proposer計算ロジックの不備</div>
+          </td>
+          <td class="p-2 border bg-blue-50 text-blue-800 font-bold">Logic Bug</td>
+        </tr>
+        <!-- Med: Validation Miss -->
+        <tr>
+          <td class="p-2 border font-bold">#15</td>
+          <td class="p-2 border font-bold text-orange-600">Med</td>
+          <td class="p-2 border text-gray-600">Nimbus</td>
+          <td class="p-2 border">
+            <div>Remote DoS via large metadata update</div>
+            <div class="text-[10px] text-gray-500">メタデータ更新時の検証不備</div>
+          </td>
+          <td class="p-2 border bg-gray-50 text-gray-800 font-bold">Simple Miss</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
-
-<div>
-  <div class="font-bold text-xs mb-1 text-red-700">見逃した重大バグの例</div>
-
-  <div class="space-y-1 text-xs">
-    <div class="p-2 border-l-4 border-red-500 bg-red-50 rounded-r">
-      <div class="font-bold text-red-800">#203 (High): c-kzg Fiat-Shamir</div>
-      <div class="text-gray-600">外部暗号ライブラリの脆弱性</div>
-      <div class="text-blue-600">→ 仕様ベース監査ではスコープ外</div>
-    </div>
-    <div class="p-2 border-l-4 border-red-500 bg-red-50 rounded-r">
-      <div class="font-bold text-red-800">#190 (High): Prysm キャッシュ</div>
-      <div class="text-gray-600">inclusion proof検証結果のキャッシュ不備</div>
-      <div class="text-blue-600">→ 静的解析では検出困難</div>
-    </div>
-    <div class="p-2 border-l-4 border-red-500 bg-red-50 rounded-r">
-      <div class="font-bold text-red-800">#176 (High): Nethermind blob</div>
-      <div class="text-gray-600">不正blob txでブロック生成停止</div>
-      <div class="text-blue-600">→ EL解析が手薄だった</div>
-    </div>
-  </div>
-
-  <div class="mt-2 p-2 bg-blue-50 rounded text-xs border border-blue-200">
-    <strong>重要:</strong> これらは改善可能な課題
-  </div>
-</div>
-
 </div>
 
 <!--
-ここからは失敗分析です。
-正直に申し上げると、他チームが見つけたHigh/Mediumのバグを全て見逃してしまいました。
+我々が見逃した5つのHigh/Medium脆弱性について、なぜ検知できなかったのか、その要因を分析しました。
 
-根本原因を分析したところ、3つの問題がありました。
+表の上から順に説明します。
+まず#203は、外部暗号ライブラリ(c-kzg)の脆弱性であり、仕様ベース監査のスコープ外でした。
+#190のPrysmキャッシュ不整合は、特定の状態遷移でのみ発生するバグで、静的解析では状態の追跡が困難でした。
+#176は不正なBlobデータによるDoSですが、これはFuzzingによる動的解析が不足していたことに起因します。
 
-1つ目は「仕様外のバグ」です。
-#203は外部暗号ライブラリの脆弱性で、我々の仕様ベース監査ではスコープ外でした。
+#40はプロポーザル計算ロジックの不備ですが、仕様の細かいニュアンスをコードに落とし込めず見逃しました。
+#15は単純なバリデーション漏れですが、チェックリストによる網羅的な確認が不足していました。
 
-2つ目は「複雑な状態遷移」です。
-#190のキャッシュ整合性のようなバグは、静的解析だけでは検出困難でした。
-
-3つ目は「動的解析の未実施」です。
-Fuzzingや依存関係スキャンを十分に行っていませんでした。
-
-これらは重く受け止めるべき課題ですが、同時に改善可能な課題でもあります。
+これら見逃しの要因を分類すると、「スコープ定義（Scope）」「状態追跡（Complex State）」「動的解析（Fuzzing Gap）」の3つに集約されます。
 -->
