@@ -35,11 +35,6 @@ layout: default
       <div>スキルレベルの異なる4名</div>
     </div>
   </div>
-
-  <div class="mt-3 p-2 bg-gray-50 rounded text-xs">
-    <div><strong>EL:</strong> Geth, Nethermind, Besu, Erigon, Reth</div>
-    <div><strong>CL:</strong> Lighthouse, Nimbus, Teku, Prysm, Lodestar, Grandine</div>
-  </div>
 </div>
 
 <div>
@@ -52,7 +47,7 @@ layout: default
     </div>
     <div class="flex items-center justify-between mb-3 pb-2 border-b border-green-200">
       <span class="text-gray-600">報奨金総額</span>
-      <span class="text-xl font-bold text-green-600">$500,000</span>
+      <span class="text-xl font-bold text-green-600">$2,000,000</span>
     </div>
     <div class="flex items-center justify-between mb-3 pb-2 border-b border-green-200">
       <span class="text-gray-600">総報告数</span>

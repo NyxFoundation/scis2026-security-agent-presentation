@@ -72,7 +72,7 @@ layout: default
 </div>
 
 <div class="text-center text-xs text-gray-500 mb-3">
-  ノード運用者は EL × CL の組み合わせを<strong>自由に選択</strong>可能 → 計11種類のクライアントが稼働
+  ノード運用者は EL × CL の組み合わせを自由に選択可能 → 計11種類のクライアントが稼働
 </div>
 
 <!-- 強みと課題 -->
@@ -96,7 +96,7 @@ layout: default
 <!-- 結論 -->
 <div class="p-2 bg-gray-100 rounded-lg text-center">
   <div class="text-sm font-bold text-gray-700">
-    → 11種類もの異なるクライアントを、どのように効率的に検証するか？
+    11種類もの異なるクライアントを、どのように効率的に検証するか？
   </div>
 </div>
 

@@ -6,7 +6,7 @@ layout: default
   <img src="/images/nyx_icon.svg" class="h-8 opacity-60" />
 </div>
 
-# コンテスト後の改善: Program Graphベースのアーキテクチャ
+# コンテスト後の改善: 形式的なチェックリスト生成
 
 <div class="text-xs text-gray-600 mb-3">
   Fusakaコンテストの課題を受け、4フェーズの構造化ワークフローに刷新
@@ -21,7 +21,7 @@ layout: default
       <div class="text-[9px] text-gray-600">仕様の形式化</div>
     </div>
     <div class="flex-grow flex flex-col justify-center">
-      <img src="/images/program_graph_main.png" class="w-full max-h-28 object-contain rounded mb-1" />
+      <img src="/images/program_graph_main.png" class="w-full max-h-60 object-contain rounded mb-1" />
       <div class="text-[7px] text-gray-600 text-center">
         <code class="bg-white px-0.5 rounded">01_SPEC.json</code>
       </div>
@@ -122,7 +122,7 @@ layout: default
 </div>
 
 <!--
-Fusakaコンテストの課題を受け、アーキテクチャを4フェーズの構造化ワークフローに刷新しました。
+Fusakaコンテストの課題を受け、アーキテクチャを4フェーズの構造化ワークフローに刷新し、より形式的にチェックリスト生成をできるようにしました。
 
 Phase 1のSPECでは、仕様をProgram Graphとして形式化します。
 29ノード、32エッジ、20のEIP別サブグラフを定義しています。

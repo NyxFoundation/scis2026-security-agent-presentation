@@ -24,7 +24,7 @@ layout: default
       既知パターンの横展開が最も効果的な戦略であることを実証。
     </div>
     <div class="mt-1 bg-white p-1.5 rounded text-[9px]">
-      <strong>根拠:</strong> bugs_ethereum.jsonに登録した50+の既知パターンを横展開
+      <strong>根拠:</strong> GitHubから取得した50+の既知パターンを横展開
     </div>
   </div>
 
@@ -58,20 +58,12 @@ layout: default
       事前のルール整合がAI監査の精度を決定する重要因子。
     </div>
   </div>
-  
-  <div class="p-2 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
-    <div class="font-bold text-sm mb-1">研究サイクルの完遂</div>
-    <div class="text-[10px] text-gray-600">
-      課題発見 → 改善策実装 → 検証のサイクルを1回転。<br>
-      Geth監査デモで改善版アーキテクチャの有効性を検証。
-    </div>
-  </div>
 </div>
 
 </div>
 
 <div class="mt-2 p-2 bg-gray-100 rounded-lg">
-  <div class="font-bold text-sm mb-1">Contribution 3: 限界の明確化</div>
+  <div class="font-bold text-sm mb-1">Contribution 3: 課題の明確化</div>
   <div class="grid grid-cols-2 gap-3 text-[10px]">
     <div>
       <strong class="text-green-600">得意領域:</strong>
@@ -101,8 +93,7 @@ layout: default
 
 第2に、AI監査における設計指針を提示しました。
 自由度の高いエージェントよりも、チェックリストに基づく構造化されたワークフローが優れていること、そして「脅威モデルの事前整合」がシステムの精度を決定づける最重要因子であることを明らかにしました。
-さらに、課題発見から改善策実装、検証のサイクルを1回転させ、Geth監査デモで改善版アーキテクチャの有効性を検証しました。
 
-第3に、現状の限界を明確化しました。
+第3に、現状の課題を明確化しました。
 既知パターンの横展開には強い一方で、High/Medium脆弱性は0件発見であり、未知の攻撃手法の発見には依然として人間の洞察が必要です。
 -->
