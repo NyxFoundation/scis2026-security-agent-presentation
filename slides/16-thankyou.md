@@ -13,13 +13,19 @@ class: text-center
   ご清聴ありがとうございました
 </div>
 
-<div class="mt-12">
-  <div class="text-lg font-bold">堤 真聖</div>
-  <div class="text-blue-400 mt-1">Nyx Foundation</div>
+<div class="flex justify-center gap-8 mt-8">
+  <div class="text-center">
+    <img src="/images/qr_gohan.png" class="w-28 h-28" />
+    <div class="text-xs text-gray-400 mt-2">SNS・スライド資料</div>
+  </div>
+  <div class="text-center">
+    <img src="/images/qr_nyx.png" class="w-28 h-28" />
+    <div class="text-xs text-gray-400 mt-2">Nyx Foundation</div>
+  </div>
 </div>
 
-<div class="mt-8 text-sm text-gray-400">
-  ご質問があればお願いいたします
+<div class="mt-4 text-xs text-gray-500">
+  ご連絡はSNSまたはメールからお願いします
 </div>
 
 <!--

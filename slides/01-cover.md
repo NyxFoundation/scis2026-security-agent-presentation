@@ -20,6 +20,17 @@ layout: cover
   SCIS 2026
 </div>
 
+<div class="absolute bottom-8 left-8 flex gap-6">
+  <div class="text-center">
+    <img src="/images/qr_gohan.png" class="w-24 h-24" />
+    <div class="text-xs text-gray-400 mt-1">Speaker</div>
+  </div>
+  <div class="text-center">
+    <img src="/images/qr_nyx.png" class="w-24 h-24" />
+    <div class="text-xs text-gray-400 mt-1">Nyx Foundation</div>
+  </div>
+</div>
+
 <!--
 Nyx Foundationの堤です。
 本日は「イーサリアムクライアント実装における自動脆弱性検知」という題目で発表いたします。
