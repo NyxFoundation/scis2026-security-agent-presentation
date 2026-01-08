@@ -16,7 +16,7 @@ layout: default
     <div>
       <div class="font-bold text-blue-800 text-sm">AIによる監査自動化は有効である</div>
       <div class="text-xs text-gray-600">
-        54件報告し<strong>17件</strong>がValid。特に<strong>類似バグ探索</strong>が効果的（<strong>76.5%</strong>）
+        54件報告し<strong>17件</strong>が有効。特に<strong>類似バグ探索</strong>が効果的（<strong>76.5%</strong>）
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@ layout: default
     <div>
       <div class="font-bold text-green-800 text-sm">「監査の民主化」を実証</div>
       <div class="text-xs text-gray-600">
-        非専門家(vita)が専門家(gohan)を上回る<strong>8件</strong>を発見。<strong>適切なコンテキスト</strong>があれば専門知識不要
+        非専門家(D氏)が専門家(B氏)を上回る<strong>8件</strong>を発見。<strong>適切なコンテキスト</strong>があれば専門知識不要
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@ layout: default
 <div class="mt-2 grid grid-cols-3 gap-2 text-[10px]">
   <div class="bg-blue-100 p-2 rounded text-center">
     <div class="font-bold text-blue-700">Fusakaコンテスト</div>
-    <div>17件発見 / Valid率31.5%</div>
+    <div>17件発見 / 有効率31.5%</div>
   </div>
   <div class="bg-green-100 p-2 rounded text-center">
     <div class="font-bold text-green-700">改善版 (Gethデモ)</div>
@@ -75,10 +75,10 @@ layout: default
 まとめです。
 
 第一に、AIによる監査自動化は有効です。
-54件報告し17件がValidとなりました。特に類似バグ探索が効果的で、発見された脆弱性の76.5%を占めました。
+54件報告し17件が有効となりました。特に類似バグ探索が効果的で、発見された脆弱性の76.5%を占めました。
 
 第二に、「監査の民主化」を実証しました。
-非専門家のvita氏が専門家のgohan氏を上回る8件を発見し、適切なコンテキストがあれば専門知識がなくても脆弱性発見が可能であることを示しました。
+非専門家のD氏が専門家のB氏を上回る8件を発見し、適切なコンテキストがあれば専門知識がなくても脆弱性発見が可能であることを示しました。
 
 第三に、課題を特定し、改善策を実装・検証しました。
 High/Medium脆弱性0件発見という課題を受け、Program GraphベースのアーキテクチャとTrust Modelを実装し、Geth監査デモで235チェックを自動生成しました。

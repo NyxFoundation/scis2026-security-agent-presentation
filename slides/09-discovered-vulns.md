@@ -69,7 +69,7 @@ layout: default
 </div>
 
 <div class="mt-2 p-2 bg-gray-100 rounded-lg">
-  <div class="font-bold text-sm mb-1">Valid判定された全17件の内訳</div>
+  <div class="font-bold text-sm mb-1">有効判定された全17件の内訳</div>
   <div class="grid grid-cols-9 gap-1 text-[9px]">
     <div class="bg-blue-100 p-1 rounded text-center">
       <div class="font-bold">Nimbus</div>
@@ -123,7 +123,7 @@ layout: default
 右側は類似バグ探索で発見した例です。
 Nimbusのblob/column上限問題、Grandineのbackfill系問題、LodestarのByRange問題など、「範囲チェック漏れ」という既知パターンを横展開することで効率的にバグを発見しました。
 
-下部には、Valid判定された全17件のクライアント別内訳を示しています。
+下部には、有効判定された全17件のクライアント別内訳を示しています。
 Nimbusが6件と最多で、Grandineが3件、Erigonが2件、残り6クライアント（Besu、Lodestar、Nethermind、Teku、Prysm、Reth）が各1件です。
 Nimbusが最多なのは、言語仕様が関係していると考えられます。
 -->

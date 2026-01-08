@@ -15,7 +15,7 @@ layout: default
 <div class="grid grid-cols-2 gap-3">
 
 <div>
-  <div class="font-bold text-sm mb-1 text-center">誤検知の主要因 (Invalid: 37件)</div>
+  <div class="font-bold text-sm mb-1 text-center">誤検知の主要因 (無効: 37件)</div>
   
   <div class="space-y-2">
     <div class="bg-red-50 p-2 rounded-lg border border-red-200">
@@ -28,7 +28,7 @@ layout: default
           <div class="font-bold">具体例: Besu #52, #53, Lighthouse #8</div>
           <div class="text-gray-600">Agent: "ELは信頼できない"</div>
           <div class="text-gray-600">Contest: "ELは信頼済み"</div>
-          <div class="text-red-600">→ EL入力を疑う指摘が全てInvalid</div>
+          <div class="text-red-600">→ EL入力を疑う指摘が全て無効</div>
         </div>
       </div>
     </div>    
@@ -104,7 +104,7 @@ layout: default
 </div>
 
 <!--
-誤検知（Invalid）の要因分析について詳しく説明します。
+誤検知（無効）の要因分析について詳しく説明します。
 
 最大の要因は「脅威モデルの不一致」でした。
 具体例として、Besu #52, #53、Lighthouse #8があります。

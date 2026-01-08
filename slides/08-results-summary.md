@@ -25,20 +25,20 @@ layout: default
       </div>
       <div>
         <div class="text-2xl font-bold text-green-600">17</div>
-        <div class="text-xs text-gray-600">Valid</div>
+        <div class="text-xs text-gray-600">有効</div>
       </div>
       <div>
         <div class="text-2xl font-bold text-red-500">37</div>
-        <div class="text-xs text-gray-600">Invalid</div>
+        <div class="text-xs text-gray-600">無効</div>
       </div>
     </div>
     <div class="mt-2 text-center text-sm">
-      <span class="text-green-600 font-bold">Valid率: 31.5%</span>
+      <span class="text-green-600 font-bold">有効率: 31.5%</span>
     </div>
   </div>
 
   <div class="bg-gray-50 p-2 rounded-lg text-xs">
-    <div class="font-bold mb-1">重要度別 (Valid 17件)</div>
+    <div class="font-bold mb-1">重要度別 (有効 17件)</div>
     <div class="grid grid-cols-4 gap-1 text-center">
       <div class="bg-red-100 p-1 rounded">
         <div class="font-bold text-red-600">0</div>
@@ -88,27 +88,31 @@ layout: default
   </div>
 
   <div class="mt-3 bg-yellow-50 p-2 rounded-lg border border-yellow-300">
-    <div class="font-bold text-sm text-yellow-800 mb-1">監査者別 (Valid)</div>
+    <div class="font-bold text-sm text-yellow-800 mb-1">監査者別 (有効)</div>
     <div class="grid grid-cols-4 gap-1 text-center text-xs">
       <div class="bg-white p-1 rounded">
-        <div class="font-bold">vita</div>
+        <div class="font-bold">D氏</div>
+        <div class="text-[8px] text-gray-500">エンジニア未経験</div>
         <div class="text-yellow-700">8件</div>
       </div>
       <div class="bg-white p-1 rounded">
-        <div class="font-bold">gohan</div>
+        <div class="font-bold">B氏</div>
+        <div class="text-[8px] text-gray-500">ホワイトハッカー</div>
         <div class="text-yellow-700">7件</div>
       </div>
       <div class="bg-white p-1 rounded">
-        <div class="font-bold">adachi</div>
+        <div class="font-bold">A氏</div>
+        <div class="text-[8px] text-gray-500">シニアエンジニア</div>
         <div class="text-yellow-700">1件</div>
       </div>
       <div class="bg-white p-1 rounded">
-        <div class="font-bold">tei</div>
+        <div class="font-bold">C氏</div>
+        <div class="text-[8px] text-gray-500">ジュニアエンジニア</div>
         <div class="text-yellow-700">1件</div>
       </div>
     </div>
     <div class="text-[10px] text-gray-600 mt-1 text-center">
-      非専門家(vita)が最多のバグを発見 → <strong>監査の民主化</strong>
+      非専門家(D氏)が最多のバグを発見 → <strong>監査の民主化</strong>
     </div>
   </div>
 </div>
@@ -118,12 +122,12 @@ layout: default
 <!--
 結果サマリーです。
 
-総報告数54件のうち、Valid判定は17件で、Valid率は31.5%でした。
+総報告数54件のうち、有効判定は17件で、有効率は31.5%でした。
 重要度別では、High 0件、Medium 0件、Low 1件、Info 16件という結果でした。
 
 発見手法別では、類似バグ探索が13件で76.5%と圧倒的に効果的でした。
 コード解析が3件で17.6%、Fuzzテストが1件で5.9%でした。
 
-監査者別では、非専門家のvitaが8件で最多、著者のgohanが7件、adachiとteiがそれぞれ1件でした。
-特筆すべきは、非専門家のvitaが最多のバグを発見したことで、「監査の民主化」を実証しています。
+監査者別では、経験なしのD氏が8件で最多、エンジニアのB氏が7件、ホワイトハッカーのA氏と経験限定的なC氏がそれぞれ1件でした。
+特筆すべきは、エンジニアやハッカーの経験がないD氏が最多のバグを発見したことで、「監査の民主化」を実証しています。
 -->

@@ -31,11 +31,11 @@ layout: default
   <div class="p-2 bg-green-50 rounded-lg border-l-4 border-green-500">
     <div class="font-bold text-sm mb-1">監査の民主化</div>
     <div class="text-[10px] text-gray-600">
-      非専門家(vita)が専門家(gohan)を上回る<strong class="text-green-700">8件</strong>の有効バグを発見。<br>
+      非専門家(D氏)が専門家(B氏)を上回る<strong class="text-green-700">8件</strong>の有効バグを発見。<br>
       適切なコンテキストがあれば、専門知識の差をAIが埋められることを実証。
     </div>
     <div class="mt-1 bg-white p-1.5 rounded text-[9px]">
-      <strong>vita氏の全8件が「類似バグ探索」戦略</strong>
+      <strong>D氏の全8件が「類似バグ探索」戦略</strong>
     </div>
   </div>
 </div>
@@ -89,7 +89,7 @@ layout: default
 
 第1に、LLMエージェントによる脆弱性検知の有効性を実証しました。
 特に「類似バグ探索」戦略が極めて有効であり、発見された脆弱性の76.5%、17件中13件がこの戦略によるものです。
-また、非専門家のvita氏が専門家のgohan氏を上回る8件の有効バグを発見し、「監査の民主化」を実証しました。
+また、非専門家のD氏が専門家のB氏を上回る8件の有効バグを発見し、「監査の民主化」を実証しました。
 
 第2に、AI監査における設計指針を提示しました。
 自由度の高いエージェントよりも、チェックリストに基づく構造化されたワークフローが優れていること、そして「脅威モデルの事前整合」がシステムの精度を決定づける最重要因子であることを明らかにしました。
