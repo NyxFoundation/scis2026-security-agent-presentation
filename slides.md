@@ -7,6 +7,7 @@ info: |
   Nyx Foundation 堤 真聖
 transition: slide-left
 mdc: true
+colorSchema: 'light'
 src: ./slides/01-cover.md
 ---
 

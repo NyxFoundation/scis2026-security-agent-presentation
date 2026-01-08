@@ -6,6 +6,12 @@
   --slidev-theme-accent: #000000;
 }
 
+/* ===== Force light mode - white background for slide content only ===== */
+.slidev-layout {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
 /* Global font settings */
 .slidev-layout,
 .slidev-page,
