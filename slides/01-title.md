@@ -10,12 +10,23 @@ layout: cover
 
 **堤 真聖**
 
-筑波大学 情報学群 情報メディア創成学類
+Nyx Foundation
 
 </div>
 
 <div class="mt-8 text-sm text-gray-500">
 SCIS 2026
+</div>
+
+<div class="absolute bottom-4 left-4 flex gap-4">
+  <div class="text-center">
+    <img src="/images/qr_gohan.png" class="w-20 h-20" />
+    <div class="text-xs text-gray-500 mt-1">Speaker</div>
+  </div>
+  <div class="text-center">
+    <img src="/images/qr_nyx.png" class="w-20 h-20" />
+    <div class="text-xs text-gray-500 mt-1">Nyx Foundation</div>
+  </div>
 </div>
 
 <!--
