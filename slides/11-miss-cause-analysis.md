@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# 見逃しの最大原因は複雑な状態遷移と動的境界条件
+# 見逃しの原因分析
 
 <div class="grid grid-cols-2 gap-6 mt-6 items-center">
 

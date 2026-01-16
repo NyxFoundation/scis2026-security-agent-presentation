@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# 高信頼ソフトウェアでは仕様と実装の整合性確認が不可欠である
+# 高信頼ソフトウェアでは仕様と実装の整合性確認が不可欠
 
 <div class="grid grid-cols-5 gap-4 mt-8 items-center">
 

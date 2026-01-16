@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Backup: 具体的な発見事例 - Nimbus カストディローテーション
+# Backup: 発見事例 - Nimbus カストディローテーション
 
 <div class="mt-4">
 

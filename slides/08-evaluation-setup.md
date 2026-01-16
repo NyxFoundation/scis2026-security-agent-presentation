@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Ethereum Fusakaアップグレードの11クライアント監査で評価した
+# Ethereumの11クライアント監査コンテストで評価
 
 <div class="grid grid-cols-2 gap-8 mt-6">
 

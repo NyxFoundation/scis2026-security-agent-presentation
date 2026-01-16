@@ -1,8 +1,8 @@
 ---
 theme: seriph
-title: SpecAudit - 仕様チェックリスト駆動の多実装コンプライアンス監査
+title: イーサリアムクライアント実装における自動脆弱性検知
 info: |
-  ## SpecAudit: 仕様チェックリスト駆動の多実装コンプライアンス監査
+  ## イーサリアムクライアント実装における自動脆弱性検知
   SCIS 2026 発表資料
   堤 真聖
 transition: slide-left
@@ -28,7 +28,7 @@ src: ./slides/05-key-idea.md
 ---
 
 ---
-src: ./slides/06-specaudit-architecture.md
+src: ./slides/06-architecture.md
 ---
 
 ---

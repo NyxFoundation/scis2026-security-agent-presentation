@@ -2,9 +2,9 @@
 layout: cover
 ---
 
-# SpecAudit: 仕様チェックリスト駆動による多実装コンプライアンス監査
+# イーサリアムクライアント実装における<br>自動脆弱性検知
 
-## Specification-Checklist-Driven Auditing for Multi-Implementation Compliance
+## Automatic Vulnerability Detection in Ethereum Client Implementation
 
 <div class="mt-12 text-center">
 
@@ -30,7 +30,7 @@ SCIS 2026
 </div>
 
 <!--
-本日は「SpecAudit」という、仕様チェックリスト駆動による多実装コンプライアンス監査フレームワークについて発表します。
+本日は「イーサリアムクライアント実装における自動脆弱性検知」について発表します。
 
 本研究では、自然言語で書かれた仕様と、それを実装した複数のコードベースの間の整合性を、大規模言語モデルを用いたエージェントで体系的に監査する手法を提案し、実際のセキュリティ監査コンテストで評価しました。
 -->

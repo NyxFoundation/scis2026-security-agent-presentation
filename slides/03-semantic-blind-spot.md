@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# 多実装環境では「全員が同じ誤解をする」問題が発生する
+# 多実装環境で起こる問題
 
 <div class="grid grid-cols-2 gap-8 mt-6">
 

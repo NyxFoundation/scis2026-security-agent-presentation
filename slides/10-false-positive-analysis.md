@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# 誤検知の最大原因はLLM能力ではなく脅威モデル不整合
+# 誤検知の原因分析
 
 <div class="grid grid-cols-2 gap-6 mt-6 items-center">
 
