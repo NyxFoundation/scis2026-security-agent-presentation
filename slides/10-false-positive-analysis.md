@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# 誤検知の最大原因はLLM能力ではなく脅威モデル不整合である
+# 誤検知の最大原因はLLM能力ではなく脅威モデル不整合
 
 <div class="grid grid-cols-2 gap-6 mt-6 items-center">
 
@@ -18,14 +18,25 @@ pie showData title 誤検知原因（計37件）
 
 </div>
 
-<div class="p-4 bg-red-50 border-l-4 border-red-500">
+<div>
 
-**脅威モデル不整合の例**
+<div class="text-sm font-bold mb-2">脅威モデル不整合の例</div>
 
-- 我々：「実行層を信頼しない」
-- コンテスト：「実行層は信頼コンポーネント」
+<div class="flex items-center gap-3 text-sm">
+<div class="p-2 bg-blue-100 border border-blue-400 rounded text-center flex-1">
+<div class="text-xs text-gray-500">我々の前提</div>
+<div class="font-bold">実行層を信頼しない</div>
+</div>
+<div class="text-2xl text-red-500">≠</div>
+<div class="p-2 bg-orange-100 border border-orange-400 rounded text-center flex-1">
+<div class="text-xs text-gray-500">コンテストの前提</div>
+<div class="font-bold">実行層は信頼</div>
+</div>
+</div>
 
-前提条件のズレが誤検知の過半数を占める
+<div class="mt-3 p-2 bg-yellow-50 border-l-4 border-yellow-500 text-sm">
+このズレだけで <span class="font-bold text-red-600">21件（56.8%）</span> の誤検知
+</div>
 
 </div>
 
@@ -33,7 +44,7 @@ pie showData title 誤検知原因（計37件）
 
 <div class="mt-4 text-center">
 
-誤検知の過半数は**前提条件の不整合**に起因 → 工程として前提を明示化すれば改善可能
+前提を明示化すれば改善可能
 
 </div>
 

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# 本手法は仕様起点×多実装×脅威モデル形式化で差別化される
+# 本手法の立ち位置
 
 <div class="flex justify-center mt-4">
 
