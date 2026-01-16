@@ -18,3 +18,75 @@ src: ./slides/02-llm-agent-potential.md
 ---
 src: ./slides/03-semantic-blind-spot.md
 ---
+
+---
+src: ./slides/04-single-impl-limitation.md
+---
+
+---
+src: ./slides/05-key-idea.md
+---
+
+---
+src: ./slides/06-specaudit-architecture.md
+---
+
+---
+src: ./slides/07-cross-impl-checks.md
+---
+
+---
+src: ./slides/08-evaluation-setup.md
+---
+
+---
+src: ./slides/09-result-strategy.md
+---
+
+---
+src: ./slides/10-false-positive-analysis.md
+---
+
+---
+src: ./slides/11-limitation-severity.md
+---
+
+---
+src: ./slides/12-miss-analysis.md
+---
+
+---
+src: ./slides/13-v2-improvement.md
+---
+
+---
+src: ./slides/14-takeaways.md
+---
+
+---
+src: ./slides/15-qa.md
+---
+
+---
+src: ./slides/backup-01-nimbus-finding.md
+---
+
+---
+src: ./slides/backup-02-v2-architecture.md
+---
+
+---
+src: ./slides/backup-03-others-findings.md
+---
+
+---
+src: ./slides/backup-04-missed-vulns.md
+---
+
+---
+src: ./slides/backup-05-method-comparison.md
+---
+
+---
+src: ./slides/backup-06-severity-definition.md
+---
