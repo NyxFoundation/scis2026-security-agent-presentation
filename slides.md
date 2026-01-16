@@ -72,21 +72,5 @@ src: ./slides/backup-01-nimbus-finding.md
 ---
 
 ---
-src: ./slides/backup-02-v2-architecture.md
----
-
----
-src: ./slides/backup-03-others-findings.md
----
-
----
-src: ./slides/backup-04-missed-vulns.md
----
-
----
-src: ./slides/backup-05-method-comparison.md
----
-
----
-src: ./slides/backup-06-severity-definition.md
+src: ./slides/backup-02-others-findings.md
 ---
