@@ -1,73 +1,76 @@
 ---
 theme: seriph
-title: イーサリアムクライアント実装における自動脆弱性検知
+title: SpecAudit - 仕様チェックリスト駆動の多実装コンプライアンス監査
 info: |
-  ## イーサリアムクライアント実装における自動脆弱性検知
-  SCIS2026 発表資料
-  Nyx Foundation 堤 真聖
+  ## SpecAudit: 仕様チェックリスト駆動の多実装コンプライアンス監査
+  SCIS 2026 発表資料
+  堤 真聖
 transition: slide-left
 mdc: true
 colorSchema: 'light'
-src: ./slides/01-cover.md
+src: ./slides/01-title.md
 ---
 
 ---
-src: ./slides/02-why-security-matters.md
+src: ./slides/02-llm-agent-potential.md
 ---
 
 ---
-src: ./slides/03-client-diversity.md
+src: ./slides/03-semantic-blind-spot.md
 ---
 
 ---
-src: ./slides/04-limitations.md
+src: ./slides/04-key-idea.md
 ---
 
 ---
-src: ./slides/05-proposal.md
+src: ./slides/05-specaudit-architecture.md
 ---
 
 ---
-src: ./slides/06-strategies.md
+src: ./slides/06-cross-impl-checks.md
 ---
 
 ---
-src: ./slides/07-experiment-setup.md
+src: ./slides/07-evaluation-setup.md
 ---
 
 ---
-src: ./slides/08-results-summary.md
+src: ./slides/08-result-strategy.md
 ---
 
 ---
-src: ./slides/09-discovered-vulns.md
+src: ./slides/09-false-positive-analysis.md
 ---
 
 ---
-src: ./slides/10-missed-vulns.md
+src: ./slides/10-limitation-severity.md
 ---
 
 ---
-src: ./slides/11-false-positive-analysis.md
+src: ./slides/11-miss-analysis.md
 ---
 
 ---
-src: ./slides/12-academic-contributions.md
----
-
-
----
-src: ./slides/13-improvements.md
+src: ./slides/12-v2-improvement.md
 ---
 
 ---
-src: ./slides/14-results.md
+src: ./slides/13-takeaways.md
 ---
 
 ---
-src: ./slides/15-conclusion.md
+src: ./slides/14-qa.md
 ---
 
 ---
-src: ./slides/16-thankyou.md
+src: ./slides/backup-01-related-work.md
+---
+
+---
+src: ./slides/backup-02-severity-definition.md
+---
+
+---
+src: ./slides/backup-03-valid-findings.md
 ---
