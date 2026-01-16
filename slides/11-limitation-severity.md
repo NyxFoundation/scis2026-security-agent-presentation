@@ -5,7 +5,7 @@ layout: default
 # V1では高・中重大度を見逃したがV2でチェック可能性を回復した
 
 <!-- 高・中重大度すべて見逃し -->
-<div class="mt-6 p-3 bg-red-100 border-l-4 border-red-500 flex items-center gap-4">
+<div class="p-3 bg-red-100 border-l-4 border-red-500 flex items-center gap-4">
 <span class="text-red-700 font-bold">高重大度 0/5、中重大度 0/2 → 全て見逃し</span>
 <span class="text-gray-500 text-sm">（低重大度 1/8）</span>
 </div>
