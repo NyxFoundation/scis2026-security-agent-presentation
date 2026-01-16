@@ -20,6 +20,10 @@ src: ./slides/03-semantic-blind-spot.md
 ---
 
 ---
+src: ./slides/03.5-single-impl-limitation.md
+---
+
+---
 src: ./slides/04-key-idea.md
 ---
 
