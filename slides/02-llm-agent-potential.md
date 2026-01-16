@@ -50,7 +50,7 @@ Go / Rust / Java / ...
 
 <div class="mt-8 text-center">
 
-<span class="text-red-600 font-bold">現状: 整合性確認は人手に依存</span> → 時間がかかり、見落としが発生
+<span class="text-red-600 font-bold">現状: 整合性確認は人手に依存</span> (時間がかかり、見落としが発生...)
 
 </div>
 

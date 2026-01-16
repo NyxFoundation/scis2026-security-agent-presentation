@@ -8,11 +8,11 @@ layout: default
 
 <div>
 
-```mermaid {scale: 0.6}
+```mermaid
 graph TD
-    SPEC[仕様文書] --> A[チームA]
-    SPEC --> B[チームB]
-    SPEC --> C[チームC]
+    SPEC[仕様文書] --> A[実装A]
+    SPEC --> B[実装B]
+    SPEC --> C[実装C]
     A --> ERR[同じ誤解]
     B --> ERR
     C --> ERR
