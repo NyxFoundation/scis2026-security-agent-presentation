@@ -4,20 +4,25 @@ layout: default
 
 # 高信頼ソフトウェアでは仕様と実装の整合性確認が不可欠
 
-<div class="grid grid-cols-5 gap-4 mt-8 items-center">
+<div class="text-center text-sm text-gray-600 mt-2">
+航空管制 / 医療機器 / 金融システム / インターネット / ブロックチェーン など
+</div>
+
+<div class="grid grid-cols-5 gap-4 mt-4 items-center">
 
 <div class="col-span-2 p-4 border-2 border-black rounded-lg">
 
 <div class="text-center text-lg font-bold mb-3">自然言語仕様</div>
 
 ```
-The validator MUST verify
-that the blob count does not
-exceed MAX_BLOBS_PER_BLOCK.
+A sender MUST NOT send a
+Content-Length header field in
+any message that contains a
+Transfer-Encoding header field.
 ```
 
 <div class="mt-3 text-sm text-center">
-RFC / EIP / 技術設計書
+RFC 7230 (HTTP/1.1) Section 3.3.2
 </div>
 
 </div>
@@ -34,14 +39,17 @@ RFC / EIP / 技術設計書
 
 <div class="text-center text-lg font-bold mb-3">実装コード</div>
 
-```go
-if len(blobs) > MAX_BLOBS {
-    return error
-}
+```python
+if length:
+    self.headers["Content-Length"] = \
+        builtin_str(length)
+else:
+    self.headers["Transfer-Encoding"] = \
+        "chunked"
 ```
 
 <div class="mt-3 text-sm text-center">
-Go / Rust / Java / ...
+requests/models.py
 </div>
 
 </div>
@@ -55,11 +63,14 @@ Go / Rust / Java / ...
 </div>
 
 <div class="absolute bottom-4 left-4 text-xs text-gray-400">
-[6] Liu et al., AUTOSPEC, arXiv:2511.17977, 2025 / RFC 2119
+RFC 7230 Section 3.3.2, https://datatracker.ietf.org/doc/html/rfc7230#section-3.3.2<br>
+requests/models.py, https://github.com/psf/requests/blob/main/src/requests/models.py
 </div>
 
 <!--
-航空管制、医療機器、金融システム、そしてブロックチェーンなど、高信頼性が求められるソフトウェアでは、仕様と実装の整合性確認が極めて重要です。
+航空管制、医療機器、金融システム、インターネット、そしてブロックチェーンなど、高信頼性が求められるソフトウェアでは、仕様と実装の整合性確認が極めて重要です。
+
+ここでは実際のRFC 7230、つまりHTTP/1.1の仕様とPythonのrequestsライブラリのコードを例示しています。
 
 これらのシステムでは、RFCや技術仕様書といった自然言語で記述された仕様があり、「MUST（必須）」「SHOULD（推奨）」といった規範語で要件が定義されています。
 

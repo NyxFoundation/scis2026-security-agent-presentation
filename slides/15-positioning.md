@@ -48,13 +48,20 @@ layout: default
 </div>
 
 <div class="absolute bottom-4 left-4 text-xs text-gray-400">
-[5] Wei et al., RFCAudit, 2025 / [8] RepoAudit, 2025 / [1][2] Fluffy, LOKI
+Zheng et al., RFCAudit, arXiv 2025, https://arxiv.org/abs/2506.00714<br>
+Guo et al., RepoAudit, ICML 2025, https://openreview.net/forum?id=TXcifVbFpG<br>
+Yang et al., Fluffy, OSDI 2021, https://www.usenix.org/conference/osdi21/presentation/yang<br>
+Ma et al., LOKI, NDSS 2023, https://www.ndss-symposium.org/ndss-paper/loki-state-aware-fuzzing-framework-for-the-implementation-of-blockchain-consensus-protocols/
 </div>
 
 <!--
-関連研究と比較すると、RFCAuditは仕様起点ですが単一実装を対象としています。RepoAuditはコード起点で検証器による誤検知削減を重視します。FluffyやLOKIは多実装の差分を利用しますが、仕様への言及はありません。
+ここで、関連研究との比較を行います。
+
+RFCAuditは仕様起点ですが単一実装を対象としています。RepoAuditはコード起点で検証器による誤検知削減を重視します。FluffyやLOKIは多実装の差分を利用しますが、仕様への言及はありません。
 
 本手法は、仕様起点で多実装に対応し、かつ脅威モデルを明示的に形式化する点で差別化されます。
 
-特に、誤検知の最大原因が脅威モデル不整合であるという知見に基づき、前提条件を工程として固定することを重視しています。
+特に、今回の実験で誤検知の最大原因が脅威モデル不整合であることがわかったため、前提条件を工程として固定することを重視しています。
+
+最後にまとめます。
 -->

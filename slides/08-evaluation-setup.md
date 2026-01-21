@@ -53,6 +53,10 @@ Low/Info も仕様違反として重要な報告
 
 </div>
 
+<div class="absolute bottom-4 left-4 text-xs text-gray-400">
+Sherlock, Ethereum Fusaka Upgrade Contest, https://audits.sherlock.xyz/contests/1140
+</div>
+
 <!--
 評価環境として、Ethereumの次期アップグレードであるFusakaの監査コンテストを使用しました。
 

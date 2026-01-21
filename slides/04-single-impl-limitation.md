@@ -45,13 +45,15 @@ graph LR
 </div>
 
 <div class="absolute bottom-4 left-4 text-xs text-gray-400">
-[1] Yang et al., Fluffy, OSDI 2021 / [2] Ma et al., LOKI, NDSS 2023 / [3] Kim et al., FORKY, ICSE 2025
+Yang et al., Fluffy, OSDI 2021, https://www.usenix.org/conference/osdi21/presentation/yang<br>
+Ma et al., LOKI, NDSS 2023, https://www.ndss-symposium.org/ndss-paper/loki-state-aware-fuzzing-framework-for-the-implementation-of-blockchain-consensus-protocols/<br>
+Kim et al., FORKY, ICSE 2025, https://doi.org/10.1109/ICSE55347.2025.00085
 </div>
 
 <!--
-既存の自動化手法として、差分テストや差分ファジングがあります。Fluffy（2021年）やLOKI（2023年）といった手法は、複数の実装に同じ入力を与え、出力の「差分」を検知することでバグを発見します。
+既存の自動化手法として、差分テストや差分ファジングがあります。FluffyやLOKIといった手法は、複数の実装に同じ入力を与え、出力の「差分」を検知することでバグを発見します。
 
-これは非常に強力な手法ですが、構造的な限界があります。それは、すべての実装が同じ誤解をしている場合、差分が出ないためバグを検知できないという点です。
+これは非常に強力な手法ですが、構造的な限界があります。それは、先ほど説明した共通モード障害、つまりすべての実装が同じ誤解をしている場合、差分が出ないためバグを検知できないという点です。
 
 我々はこれを「意味的盲点」と呼んでいます。差分テストのオラクル、つまり正解の判定基準は「他の実装との違い」であり、「仕様との整合性」ではないのです。
 -->
